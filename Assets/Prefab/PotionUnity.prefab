@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5281389011864407856
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.528
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.80492204
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.9912963
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5335144657313714839, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 02c9e7e186bbbe64b8c1ac115df88b1a, type: 2}
+    - target: {fileID: -772798723794940250, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e6de499c07b8584d9c9033769babad2, type: 2}
+    - target: {fileID: 919132149155446097, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: m_Name
+      value: PotionUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044683615544721777, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e6c181110cfd13a418ca14946069ea71, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8315695510981640877, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7436109666106309920}
+  m_SourcePrefab: {fileID: 100100000, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+--- !u!1 &5031635339521077859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8315695510981640877, guid: bd2e657e683381c4fa034a9d4288b74d, type: 3}
+  m_PrefabInstance: {fileID: 5281389011864407856}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7436109666106309920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5031635339521077859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e10468828456f42993583d36d7946f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wobble
+  MaxWobble: 0.03
+  WobbleSpeed: 1
+  Recovery: 1
