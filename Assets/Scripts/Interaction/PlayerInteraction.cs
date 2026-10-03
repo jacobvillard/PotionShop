@@ -22,6 +22,7 @@ public class PlayerInteraction : MonoBehaviour
     private float originalDrag;
     private float originalAngularDrag;
     private bool isPotionLayer;
+    private bool isItemLayer;
     
     private void Awake()
     {
@@ -122,6 +123,7 @@ public class PlayerInteraction : MonoBehaviour
         
         var layer = rb.gameObject.layer;
         isPotionLayer = layer == LayerMask.NameToLayer("Potion");
+        isItemLayer = layer == LayerMask.NameToLayer("Items");
   
         rb.useGravity = true;
     }
@@ -159,6 +161,12 @@ public class PlayerInteraction : MonoBehaviour
             targetRotation =
                 playerCamera.transform.rotation *
                 Quaternion.Euler(-90f, 0f, 0f);
+        }
+        else if (isItemLayer)
+        {
+            targetRotation =
+                playerCamera.transform.rotation *
+                Quaternion.Euler(0f, 0f, 0f);
         }
         else
         {

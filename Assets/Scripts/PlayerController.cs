@@ -13,10 +13,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float mouseSensitivity = 0.15f;
     [SerializeField] private float maxLookAngle = 80f;
+    [Tooltip("Smooths small mouse-input steps. Set to 0 for raw mouse look.")]
+    [SerializeField, Range(0f, 0.15f)] private float mouseSmoothing = 0.03f;
 
     private CharacterController controller;
     private Vector3 velocity;
     private float cameraPitch;
+    private Vector2 smoothedMouseDelta;
+    private Vector2 mouseSmoothVelocity;
 
     private void Awake()
     {
@@ -79,10 +83,17 @@ public class PlayerController : MonoBehaviour
         if (Mouse.current == null || cameraTransform == null)
             return;
 
-        Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+        Vector2 rawMouseDelta = Mouse.current.delta.ReadValue();
+        smoothedMouseDelta = mouseSmoothing > 0f
+            ? Vector2.SmoothDamp(
+                smoothedMouseDelta,
+                rawMouseDelta,
+                ref mouseSmoothVelocity,
+                mouseSmoothing)
+            : rawMouseDelta;
 
-        float mouseX = mouseDelta.x * mouseSensitivity;
-        float mouseY = mouseDelta.y * mouseSensitivity;
+        float mouseX = smoothedMouseDelta.x * mouseSensitivity;
+        float mouseY = smoothedMouseDelta.y * mouseSensitivity;
 
         // Turn player left/right
         transform.Rotate(Vector3.up * mouseX);

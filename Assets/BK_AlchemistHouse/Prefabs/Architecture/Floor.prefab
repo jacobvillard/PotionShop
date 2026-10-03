@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4425874899348998}
   - component: {fileID: 33841861213753300}
   - component: {fileID: 23600036304230078}
-  - component: {fileID: 64734071930423792}
+  - component: {fileID: 4373555571898298394}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Wood
@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421525585144540}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21b13ad178f95194a9864afdb2456062, type: 2}
+  - {fileID: 2100000, guid: 5d1f10bc650e8884cba607b064c2c0b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,8 +91,8 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64734071930423792
-MeshCollider:
+--- !u!65 &4373555571898298394
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,7 +109,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 3ac38b686065dab48927682843360da9, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 2.5000005, z: 0.16024122}
+  m_Center: {x: 0, y: -2.5040443e-16, z: -0.08012063}
