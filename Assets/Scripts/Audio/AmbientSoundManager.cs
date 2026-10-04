@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AmbientSoundManager : MonoBehaviour
 {
+    [SerializeField] private AudioMixerGroup mixer;
     [System.Serializable]
     public class WeightedClip
     {
@@ -111,6 +113,7 @@ public class AmbientSoundManager : MonoBehaviour
 
             source.clip = clip;
             source.loop = true;
+            source.outputAudioMixerGroup = mixer;
             source.Play();
 
             audioObjects.Add(audioObject);
@@ -137,6 +140,7 @@ public class AmbientSoundManager : MonoBehaviour
 
                 source.clip = clip;
                 source.loop = true;
+                source.outputAudioMixerGroup = mixer;
                 source.Play();
 
                 audioObjects.Add(audioObject);
@@ -261,6 +265,7 @@ public class AmbientSoundManager : MonoBehaviour
 
         source.clip = clip;
         source.loop = false;
+        source.outputAudioMixerGroup = mixer;
 
         source.Play();
 
@@ -276,6 +281,7 @@ public class AmbientSoundManager : MonoBehaviour
 
         source.minDistance = layer.minDistance;
         source.maxDistance = layer.maxDistance;
+        source.outputAudioMixerGroup = mixer;
 
         source.rolloffMode =
             AudioRolloffMode.Logarithmic;

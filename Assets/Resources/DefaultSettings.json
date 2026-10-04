@@ -1,0 +1,12 @@
+{
+  "settingsVersion": 3,
+  "masterVolume": 1.0,
+  "musicVolume": 0.01,
+  "sfxVolume": 1.0,
+  "mouseSensitivity": 0.15,
+  "interactKey": "E",
+  "useBinding": "MouseLeft",
+  "vSync": false,
+  "qualityLevel": 1,
+  "fullscreenMode": -1
+}

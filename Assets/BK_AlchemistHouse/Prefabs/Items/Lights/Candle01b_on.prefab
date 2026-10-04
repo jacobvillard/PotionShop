@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 64886344061715266}
   - component: {fileID: 54324626887154284}
   - component: {fileID: 4960997069548405355}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Candle01b_on
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,6 +165,7 @@ MonoBehaviour:
   spatialBlend: 1
   minDistance: 0.05
   maxDistance: 0.1
+  useLinearRolloff: 0
 --- !u!1 &1531674435913840
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ GameObject:
   - component: {fileID: 4681413721744400}
   - component: {fileID: 33335088767784000}
   - component: {fileID: 23120567889764246}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +267,7 @@ GameObject:
   - component: {fileID: 4809177064929766}
   - component: {fileID: 33827834787888480}
   - component: {fileID: 23585420425330614}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Quad (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +358,7 @@ GameObject:
   - component: {fileID: 108460654045448504}
   - component: {fileID: 114316633700375258}
   - component: {fileID: 2037206964763043152}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -23,6 +23,7 @@ public class LoopingSoundPlayer : MonoBehaviour
 
     [Tooltip("TRUE = Linear rolloff. FALSE = Logarithmic rolloff.")]
     [SerializeField] private bool useLinearRolloff = false;
+    
 
     private readonly List<AudioSource> sources = new();
 
@@ -54,6 +55,9 @@ public class LoopingSoundPlayer : MonoBehaviour
 
             source.clip = clip;
             source.loop = true;
+            source.outputAudioMixerGroup = AudioManager.Instance != null
+                ? AudioManager.Instance.SfxMixerGroup
+                : null;
             source.Play();
 
             sources.Add(source);
@@ -78,6 +82,9 @@ public class LoopingSoundPlayer : MonoBehaviour
 
             source.clip = clip;
             source.loop = false;
+            source.outputAudioMixerGroup = AudioManager.Instance != null
+                ? AudioManager.Instance.SfxMixerGroup
+                : null;
             source.Play();
 
             sources.Add(source);

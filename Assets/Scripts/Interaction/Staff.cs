@@ -139,53 +139,96 @@ public class Staff : MonoBehaviour, IUseable
     }
 
     private void FireLightning()
+{
+    FindZapEffect();
+
+    if (zapEffect == null)
     {
-        FindZapEffect();
+        Debug.LogWarning(
+            $"{name}: No Zap effect assigned. Assign the scene Zap object to the Staff component.",
+            this
+        );
+        return;
+    }
 
-        if (zapEffect == null)
+    Transform start = lightningStartPoint != null
+        ? lightningStartPoint
+        : transform;
+
+    Vector3 origin = start.position;
+
+    // Local Z direction.
+    Vector3 direction = start.forward;
+
+    if (direction.sqrMagnitude < 0.0001f)
+        return;
+
+    float distance = maxLightningDistance;
+
+    RaycastHit closestHit = default;
+    bool hasHit = false;
+
+    RaycastHit[] hits = Physics.RaycastAll(
+        origin,
+        direction,
+        maxLightningDistance,
+        hitMask,
+        QueryTriggerInteraction.Ignore
+    );
+
+    foreach (RaycastHit hit in hits)
+    {
+        // Don't hit the staff itself.
+        if (hit.collider.transform.IsChildOf(transform))
+            continue;
+
+        if (!hasHit || hit.distance < closestHit.distance)
         {
-            Debug.LogWarning($"{name}: No Zap effect assigned. Assign the scene Zap object to the Staff component.", this);
-            return;
-        }
-
-        Transform start = lightningStartPoint != null ? lightningStartPoint : transform;
-        Vector3 origin = start.position;
-        Vector3 direction = start.forward;
-
-        if (direction.sqrMagnitude < 0.0001f)
-            return;
-
-        float distance = maxLightningDistance;
-        RaycastHit[] hits = Physics.RaycastAll(origin, direction, maxLightningDistance, hitMask, QueryTriggerInteraction.Ignore);
-
-        foreach (RaycastHit hit in hits)
-        {
-            // The staff's own collider is held in front of the player, so do not let it block the cast.
-            if (hit.collider.transform.IsChildOf(transform))
-                continue;
-
-            if (hit.distance < distance)
-                distance = hit.distance;
-        }
-
-        zapEffect.position = origin;
-        zapEffect.rotation = Quaternion.FromToRotation(Vector3.up, direction);
-
-        Vector3 scale = zapEffect.localScale;
-        scale.y = distance / zapBaseLength;
-        zapEffect.localScale = scale;
-
-        zapEffect.gameObject.SetActive(true);
-        foreach (ParticleSystem particleSystem in zapParticleSystems)
-        {
-            particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-
-            if (IsGroundEffect(particleSystem))
-                continue;
-
-            particleSystem.Play(true);
+            closestHit = hit;
+            hasHit = true;
+            distance = hit.distance;
         }
     }
+
+    // Position / stretch lightning.
+    zapEffect.position = origin;
+
+    zapEffect.rotation = Quaternion.FromToRotation(
+        Vector3.up,
+        direction
+    );
+
+    Vector3 scale = zapEffect.localScale;
+    scale.y = distance / zapBaseLength;
+    zapEffect.localScale = scale;
+
+    zapEffect.gameObject.SetActive(true);
+
+    foreach (ParticleSystem particleSystem in zapParticleSystems)
+    {
+        particleSystem.Stop(
+            true,
+            ParticleSystemStopBehavior.StopEmittingAndClear
+        );
+
+        if (IsGroundEffect(particleSystem))
+            continue;
+
+        particleSystem.Play(true);
+    }
+
+    // Whatever the lightning hit gets staffed.
+    if (hasHit)
+    {
+        IStaffable staffable =
+            closestHit.collider.GetComponentInParent<IStaffable>();
+
+        if (staffable != null)
+        {
+            staffable.GetStaffedBiatch();
+        }
+    }
+}
 
     private void FindZapEffect()
     {

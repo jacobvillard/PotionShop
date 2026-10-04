@@ -37,10 +37,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _SparkleTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SwirlTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -63,21 +59,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fill: 0.581
-    - _LiquidHeight: 0
+    - _Fill: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SparkleSpeed: 0
-    - _SparkleStength: 0
-    - _SparkleTiling: 0
     - _SwirlSpeed: 0
     - _SwirlStrength: 0
     - _SwirlTiling: 0
     - _WobbleX: 0
     - _WobbleZ: 0
     m_Colors:
-    - _SideColor: {r: 0.254902, g: 0.4117647, b: 0.882353, a: 1}
-    - _SparkleColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TopColor: {r: 0.254902, g: 0.4117647, b: 0.882353, a: 1}
+    - _SideColor: {r: 0.25490198, g: 0.4117647, b: 0.88235295, a: 1}
+    - _TopColor: {r: 0.25490198, g: 0.4117647, b: 0.88235295, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

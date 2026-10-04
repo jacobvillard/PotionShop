@@ -1,0 +1,7 @@
+{
+    "name": "HeyHeyThere.PixelUIFree.Editor",
+    "rootNamespace": "HeyHeyThere.PixelUIFree",
+    "references": ["HeyHeyThere.PixelUIFree", "Unity.TextMeshPro", "UnityEngine.UI", "UnityEditor.UI"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": false
+}

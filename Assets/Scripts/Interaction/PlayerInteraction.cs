@@ -17,6 +17,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float rotationDamping = 10f;
 
     private Rigidbody heldRigidbody;
+    private ISinkable heldSinkable;
+    private IHoldable heldHoldable;
     private Quaternion heldRotation;
 
     private float originalDrag;
@@ -34,10 +36,13 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         if (Keyboard.current == null)
             return;
 
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (SettingsManager.InteractPressed())
         {
             if (heldRigidbody != null)
             {
@@ -49,8 +54,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
         
-        if (heldRigidbody != null &&
-            Mouse.current.leftButton.wasPressedThisFrame)
+        if (heldRigidbody != null && SettingsManager.UsePressed())
         {
             IUseable useable =
                 heldRigidbody.GetComponentInParent<IUseable>();
@@ -64,6 +68,14 @@ public class PlayerInteraction : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // A jar can be placed directly while held. Once its slot catches it,
+        // stop the carry controller from trying to move its kinematic body.
+        if (heldHoldable is IngredientJar jar && jar.IsLocked)
+        {
+            ReleaseHeldObject();
+            return;
+        }
+
         if (heldRigidbody != null)
         {
             MoveHeldObject();
@@ -87,29 +99,75 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
-        // Interactables take priority.
+        // Get both BEFORE interacting.
         IInteractable interactable =
             hit.collider.GetComponentInParent<IInteractable>();
+
+        Rigidbody rb =
+            hit.collider.attachedRigidbody;
+
+        // Mark a sinkable as held before unlocking it. Changing its parent can
+        // synchronously generate trigger events, so this must happen before
+        // Interact() releases it from the sink.
+        ISinkable sinkable =
+            hit.collider.GetComponentInParent<ISinkable>();
+
+        IHoldable holdable =
+            hit.collider.GetComponentInParent<IHoldable>();
+
+        bool markedForPickup =
+            heldRigidbody == null && sinkable != null;
+
+        if (markedForPickup)
+            sinkable.SetIsHeld(true);
+
+        bool markedHoldableForPickup =
+            heldRigidbody == null && holdable != null;
+
+        if (markedHoldableForPickup)
+            holdable.SetIsHeld(true);
+
+        // --------------------------------------------------
+        // INTERACT FIRST
+        // --------------------------------------------------
 
         if (interactable != null)
         {
             interactable.Interact();
-            return;
         }
 
-        // Otherwise try grabbing a Rigidbody.
-        Rigidbody rb =
-            hit.collider.attachedRigidbody;
+        // --------------------------------------------------
+        // THEN TRY PICKUP
+        // --------------------------------------------------
 
-        if (rb != null && !rb.isKinematic)
+        // Important:
+        // Interact() may have just changed this Rigidbody
+        // from kinematic -> non-kinematic.
+        if (rb != null &&
+            !rb.isKinematic &&
+            heldRigidbody == null)
         {
             PickupObject(rb);
         }
+        else if (markedForPickup)
+        {
+            // The interaction did not result in a pickup (for example, the
+            // cauldron is still filling), so restore its normal lock state.
+            sinkable.SetIsHeld(false);
+        }
+
+        if (markedHoldableForPickup && heldRigidbody == null)
+            holdable.SetIsHeld(false);
     }
 
     private void PickupObject(Rigidbody rb)
     {
         heldRigidbody = rb;
+        heldSinkable = rb.GetComponentInParent<ISinkable>();
+        heldSinkable?.SetIsHeld(true);
+
+        heldHoldable = rb.GetComponentInParent<IHoldable>();
+        heldHoldable?.SetIsHeld(true);
 
         originalDrag = rb.linearDamping;
         originalAngularDrag = rb.angularDamping;
@@ -204,6 +262,17 @@ public class PlayerInteraction : MonoBehaviour
 
     private void DropObject()
     {
+        ReleaseHeldObject();
+    }
+
+    private void ReleaseHeldObject()
+    {
+        heldSinkable?.SetIsHeld(false);
+        heldSinkable = null;
+
+        heldHoldable?.SetIsHeld(false);
+        heldHoldable = null;
+
         heldRigidbody.linearDamping = originalDrag;
         heldRigidbody.angularDamping = originalAngularDrag;
 

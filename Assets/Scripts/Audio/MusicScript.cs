@@ -36,7 +36,13 @@ public class MusicScript : MonoBehaviour
     // Update is called once per frame
     private  void Update()
     {
-        if(hasFocus && audioSource != null && !audioSource.isPlaying)
+        if (audioSource == null)
+            return;
+
+        if (SettingsManager.Current != null)
+            audioSource.volume = SettingsManager.Current.musicVolume;
+
+        if(hasFocus && !audioSource.isPlaying)
         {
             PlayRandomMusic();
         }

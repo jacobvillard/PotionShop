@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a37c5ac9aad40e988dd41c8a169ec60, type: 3}
+  m_Name: PotionRecipeBook
+  m_EditorClassIdentifier: Assembly-CSharp::PotionRecipeBook
+  recipes:
+  - potionName: Health Potion
+    potionPrefab: {fileID: 5709112046209051696, guid: 6c0b266a449a26840b80d3959884d3a2, type: 3}
+    requiresBoiled: 1
+    liquids:
+    - ingredient: 0
+      amount: 1
+    - ingredient: 2
+      amount: 1
+    petals:
+    - type: 2
+      state: 1
+      amount: 2
+    additionalIngredients: []

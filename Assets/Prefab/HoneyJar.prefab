@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 3351573248571052709}
   - component: {fileID: 5806164232218529493}
   - component: {fileID: 8048768272007106032}
+  - component: {fileID: 8516029567784231051}
   m_Layer: 3
   m_Name: HoneyJar
   m_TagString: Untagged
@@ -298,7 +299,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.556, y: -2.191, z: 0.479}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.98}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4597415227296174670}
@@ -356,6 +357,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.24747877, y: 0.2474788, z: 0.46}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8516029567784231051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410376566271879878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59eeebd3578b4f18a4f0de0ef90a6e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientJar
+  ingredient: 2
+  remainingAmount: 1
+  amountPerUse: 0.5
+  rb: {fileID: 5806164232218529493}
+  liquidObject: {fileID: 6522679579238084379}
+  liquidRenderer: {fileID: 6181089157805389836}
+  minimumVisualFill: 0.44
+  maximumVisualFill: 0.611
 --- !u!1 &6522679579238084379
 GameObject:
   m_ObjectHideFlags: 0

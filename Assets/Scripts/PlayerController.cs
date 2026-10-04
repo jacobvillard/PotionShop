@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         HandleMovement();
         HandleMouseLook();
     }
@@ -92,8 +95,11 @@ public class PlayerController : MonoBehaviour
                 mouseSmoothing)
             : rawMouseDelta;
 
-        float mouseX = smoothedMouseDelta.x * mouseSensitivity;
-        float mouseY = smoothedMouseDelta.y * mouseSensitivity;
+        float sensitivity = SettingsManager.Current != null
+            ? SettingsManager.Current.mouseSensitivity
+            : mouseSensitivity;
+        float mouseX = smoothedMouseDelta.x * sensitivity;
+        float mouseY = smoothedMouseDelta.y * sensitivity;
 
         // Turn player left/right
         transform.Rotate(Vector3.up * mouseX);

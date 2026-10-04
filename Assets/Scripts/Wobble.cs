@@ -41,6 +41,27 @@ public class Wobble : MonoBehaviour
 
     private void Update()
     {
+        // The pause menu sets timeScale to zero, which makes deltaTime zero.
+        // Do not calculate velocity during that frame or the shader receives NaN
+        // wobble values and can leave the liquid invisible after resuming.
+        if (Time.deltaTime <= 0f)
+        {
+            wobbleAmountX = 0f;
+            wobbleAmountZ = 0f;
+            wobbleAmountToAddX = 0f;
+            wobbleAmountToAddZ = 0f;
+
+            if (rend != null)
+            {
+                rend.material.SetFloat("_WobbleX", 0f);
+                rend.material.SetFloat("_WobbleZ", 0f);
+            }
+
+            lastPos = transform.position;
+            lastRot = transform.rotation.eulerAngles;
+            return;
+        }
+
         time += Time.deltaTime;
 
         // Recover wobble back toward zero

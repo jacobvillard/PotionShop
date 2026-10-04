@@ -1,0 +1,36 @@
+Soft UI SFX Free
+
+Documentation. 25 sounds as WAV (44.1 kHz, 16-bit, mono), one AudioClip each, a folder
+per kind:
+
+  cancel/ (2)
+    back_01, cancel_01
+  clicks/ (3)
+    click_01, click_pop_01, click_wood_01
+  confirm/ (3)
+    confirm_01, confirm_03, confirm_pluck_01
+  drag/ (1)
+    drop_01
+  error/ (2)
+    error_01, error_buzz_01
+  hover/ (2)
+    hover_01, hover_tick_01
+  notification/ (2)
+    notify_01, notify_03
+  pop/ (2)
+    bubble_01, pop_01
+  reward/ (2)
+    coin, level_up
+  swish/ (1)
+    swish_01
+  toggles/ (2)
+    toggle_off_01, toggle_on_01
+  typing/ (1)
+    type_01
+  windows/ (2)
+    close_01, open_01
+
+  Demo/SoftUISFXFreeDemo.unity   a button per sound
+
+Play one with AudioSource.PlayOneShot(clip). The WAVs import in any Unity version; the demo
+scene needs Unity 6.3 or later.
