@@ -25,10 +25,15 @@ public class DripDispenser : MonoBehaviour, IInteractable
     [SerializeField, Min(0f)] private float streamTurnOnDuration = 0.15f;
     [SerializeField, Min(0f)] private float streamTurnOffDuration = 0.2f;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip dispensingLoopSfx;
+    [SerializeField, Range(0f, 1f)] private float dispensingLoopVolume = 0.7f;
+
     private Coroutine dispensingRoutine;
     private MaterialPropertyBlock streamPropertyBlock;
     private int streamFillPropertyId;
     private Material streamMaterialInstance;
+    private AudioSource dispensingAudioSource;
 
     public bool IsDispensing => dispensingRoutine != null;
 
@@ -47,12 +52,22 @@ public class DripDispenser : MonoBehaviour, IInteractable
             liquidStream.SetActive(false);
 
         SetStreamFill(0f);
+        dispensingAudioSource = SfxAudio.CreateLoopSource(
+            gameObject, dispensingLoopSfx, dispensingLoopVolume);
     }
 
     private void OnDestroy()
     {
+        jarSlot?.SetRemovalLocked(false);
+
         if (streamMaterialInstance != null)
             Destroy(streamMaterialInstance);
+    }
+
+    private void OnDisable()
+    {
+        // Coroutines stop when disabled; never leave the inserted jar locked.
+        jarSlot?.SetRemovalLocked(false);
     }
 
     public void Interact()
@@ -88,9 +103,13 @@ public class DripDispenser : MonoBehaviour, IInteractable
         }
 
         cauldron.BeginFilling();
+        jarSlot?.SetRemovalLocked(true);
 
         if (liquidStream != null)
             liquidStream.SetActive(true);
+
+        SfxAudio.RouteToSfxMixer(dispensingAudioSource);
+        dispensingAudioSource?.Play();
 
         yield return AnimateStream(0f, 1f, streamTurnOnDuration);
 
@@ -120,7 +139,10 @@ public class DripDispenser : MonoBehaviour, IInteractable
             liquidStream.SetActive(false);
         }
 
+        dispensingAudioSource?.Stop();
+
         cauldron.FinishFilling();
+        jarSlot?.SetRemovalLocked(false);
         dispensingRoutine = null;
     }
 

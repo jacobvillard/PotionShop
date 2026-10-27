@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DaisyWhitePetal
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c52d4ef7a3a2074d9582c49001ca862, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -151,9 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca835f6e0e946d69afb0e2d1f30612a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Petal
+  petalType: 0
   state: 0
   dryingProgress: 0
   driedMaterialValue: 0.39
+  dryingLoopSfx: {fileID: 8300000, guid: 5eb8d437e439d7845b2c62d1f79a49f4, type: 3}
+  dryingLoopVolume: 0.45
   processingTimerPrefab: {fileID: 7063415256782355870, guid: 60803dbbb69ca8a4ca64853d27352a82, type: 3}
   preserveTimerPrefabScale: 1
   timerHeight: 0

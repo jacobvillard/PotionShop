@@ -9,11 +9,17 @@ public class IngredientDetector : MonoBehaviour
     [SerializeField, TextArea] private string defaultText =
         "Place object here to detect INGREDIENTS";
     [SerializeField] private string emptyCauldronText = "No ingredients detected.";
+    [Header("Chalkboard SFX")]
+    [SerializeField] private AudioClip textChangedSfx;
+    [SerializeField, Range(0f, 1f)] private float textChangedSfxVolume = 0.5f;
+    [SerializeField, Min(0f)] private float textChangedSfxCooldown = 0.4f;
 
     private readonly HashSet<Cauldron> detectedCauldrons = new();
     private readonly HashSet<Petal> detectedPetals = new();
     private readonly StringBuilder textBuilder = new();
     private string displayedText;
+    private bool hasInitialisedDisplay;
+    private float lastTextSfxTime = float.NegativeInfinity;
 
     private void Awake()
     {
@@ -21,6 +27,7 @@ public class IngredientDetector : MonoBehaviour
             ingredientText = GetComponentInChildren<TMP_Text>(true);
 
         RefreshText();
+        hasInitialisedDisplay = true;
     }
 
     private void Update()
@@ -78,6 +85,12 @@ public class IngredientDetector : MonoBehaviour
 
         ingredientText.text = nextText;
         displayedText = nextText;
+
+        if (hasInitialisedDisplay && Time.time >= lastTextSfxTime + textChangedSfxCooldown)
+        {
+            SfxAudio.PlayAt(textChangedSfx, transform.position, textChangedSfxVolume);
+            lastTextSfxTime = Time.time;
+        }
     }
 
     private Cauldron GetDetectedCauldron()

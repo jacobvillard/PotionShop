@@ -89,6 +89,7 @@ public class Staff : MonoBehaviour, IUseable
         SetEffectActive(staffGlowEffect, false);
         SetParticleEffectsActive(sparkEffects, false);
         SetParticleEffectsActive(electricityEffects, false);
+        RouteSpellAudioToSfxMixer();
         SetupPostProcessing();
     }
 
@@ -383,12 +384,20 @@ public class Staff : MonoBehaviour, IUseable
         if (spellAudioSource == null || clips == null || clips.Length == 0)
             return;
 
+        RouteSpellAudioToSfxMixer();
+
         AudioClip clip = clips[Random.Range(0, clips.Length)];
         if (clip == null)
             return;
 
         spellAudioSource.pitch = Random.Range(sfxPitchRange.x, sfxPitchRange.y);
         spellAudioSource.PlayOneShot(clip);
+    }
+
+    private void RouteSpellAudioToSfxMixer()
+    {
+        if (spellAudioSource != null && AudioManager.Instance != null)
+            spellAudioSource.outputAudioMixerGroup = AudioManager.Instance.SfxMixerGroup;
     }
 
     private void SetupPostProcessing()

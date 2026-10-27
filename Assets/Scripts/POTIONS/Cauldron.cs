@@ -52,6 +52,13 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
     [SerializeField] private bool preserveBoilingTimerPrefabScale = true;
     [SerializeField, Min(0f)] private float boilingTimerHeight = 0.35f;
 
+    [Header("Boiling SFX")]
+    [Tooltip("One assigned clip is chosen at random and looped for each boil.")]
+    [SerializeField] private List<AudioClip> boilingLoopSfx = new List<AudioClip>();
+    [SerializeField] private AudioClip boilStartSfx;
+    [SerializeField] private AudioClip boilStopSfx;
+    [SerializeField, Range(0f, 1f)] private float boilingSfxVolume = 0.7f;
+
     [Header("Boiling Effects")]
     [SerializeField] private GameObject bubblesObject;
     [SerializeField] private Renderer bubblesRenderer;
@@ -59,6 +66,8 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
 
     [Header("Potion Conversion")]
     [SerializeField] private PotionRecipeBook recipeBook;
+    [SerializeField] private AudioClip potionConversionSfx;
+    [SerializeField, Range(0f, 1f)] private float potionConversionSfxVolume = 0.9f;
 
     private static readonly int FillProperty = Shader.PropertyToID("_Fill");
     private static readonly int SideColorProperty = Shader.PropertyToID("_SideColor");
@@ -69,6 +78,7 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
     private Material bubblesMaterialInstance;
     private MaterialPropertyBlock liquidPropertyBlock;
     private GameObject boilingTimerInstance;
+    private AudioSource boilingAudioSource;
 
     public bool IsLockedInSink { get; private set; }
 
@@ -107,6 +117,7 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
 
     private Transform originalParent;
     private Sink lockedSink;
+    private EssenceCauldronSlot lockedEssenceSlot;
     private bool wasKinematicBeforeFilling;
 
     private void Awake()
@@ -249,6 +260,29 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
         return content?.amount ?? 0;
     }
 
+    /// <summary>
+    /// Adds a distilled liquid essence once. Essences intentionally use the
+    /// normal additional-ingredient list so recipe matching and the ingredient
+    /// detector can see them without a second contents model.
+    /// </summary>
+    public bool TryAddEssence(LiquidIngredient liquid)
+    {
+        if (liquid != LiquidIngredient.Honey && liquid != LiquidIngredient.Milk)
+            return false;
+
+        string id = $"essence_{liquid.ToString().ToLowerInvariant()}";
+        if (GetAdditionalIngredientAmount(id) > 0)
+            return false;
+
+        additionalIngredients.Add(new AdditionalIngredientContent
+        {
+            ingredientId = id,
+            displayName = $"{liquid} Essence",
+            amount = 1
+        });
+        return true;
+    }
+
     public bool BeginBoiling()
     {
         if (IsBoiling || IsBoiled || IsBeingFilled || CurrentLiquidAmount <= Mathf.Epsilon)
@@ -261,6 +295,8 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
 
         SetBoilingEffectsActive(true);
         SetBoilingTimerVisible(true);
+        SfxAudio.PlayAt(boilStartSfx, transform.position, boilingSfxVolume);
+        PlayRandomBoilingAudio();
         return true;
     }
 
@@ -272,6 +308,8 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
         IsBoiling = false;
         SetBoilingEffectsActive(false);
         SetBoilingTimerVisible(false);
+        StopBoilingAudio();
+        SfxAudio.PlayAt(boilStopSfx, transform.position, boilingSfxVolume);
     }
 
     public void FinishBoiling()
@@ -283,6 +321,8 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
         IsBoiled = true;
         SetBoilingEffectsActive(false);
         SetBoilingTimerVisible(false);
+        StopBoilingAudio();
+        SfxAudio.PlayAt(boilStopSfx, transform.position, boilingSfxVolume);
     }
 
     public Color GetLiquidVisualColour()
@@ -356,6 +396,45 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
             };
             bubblesRenderer.sharedMaterial = bubblesMaterialInstance;
         }
+    }
+
+    private void StopBoilingAudio()
+    {
+        if (boilingAudioSource != null)
+            boilingAudioSource.Stop();
+    }
+
+    private void PlayRandomBoilingAudio()
+    {
+        List<AudioClip> validClips = new List<AudioClip>();
+        foreach (AudioClip clip in boilingLoopSfx)
+        {
+            if (clip != null)
+                validClips.Add(clip);
+        }
+
+        if (validClips.Count == 0)
+            return;
+
+        AudioClip selectedClip = validClips[Random.Range(0, validClips.Count)];
+
+        if (boilingAudioSource == null)
+        {
+            boilingAudioSource = SfxAudio.CreateLoopSource(
+                gameObject, selectedClip, boilingSfxVolume);
+        }
+        else
+        {
+            boilingAudioSource.clip = selectedClip;
+        }
+
+        if (boilingAudioSource == null)
+            return;
+
+        boilingAudioSource.volume = boilingSfxVolume;
+        boilingAudioSource.loop = true;
+        SfxAudio.RouteToSfxMixer(boilingAudioSource);
+        boilingAudioSource.Play();
     }
 
     private Material GetMaterialForIngredient(LiquidIngredient ingredient)
@@ -592,6 +671,43 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
         }
     }
 
+    // --------------------------------------------------
+    // ESSENCE EXTRACTOR SLOT
+    // --------------------------------------------------
+
+    public bool IsLockedInEssenceSlot => lockedEssenceSlot != null;
+    public bool CanLockInEssenceSlot =>
+        !IsBeingFilled && !IsLockedInSink && lockedEssenceSlot == null;
+
+    public void LockToEssenceSlot(EssenceCauldronSlot slot, Transform lockPoint)
+    {
+        if (slot == null || !CanLockInEssenceSlot)
+            return;
+
+        lockedEssenceSlot = slot;
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+        }
+
+        transform.SetParent(lockPoint);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    public void UnlockFromEssenceSlot()
+    {
+        if (lockedEssenceSlot == null || IsBeingFilled)
+            return;
+
+        lockedEssenceSlot = null;
+        transform.SetParent(originalParent);
+        if (rb != null)
+            rb.isKinematic = false;
+    }
+
 
     public void Interact()
     {
@@ -600,6 +716,12 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
         if (lockedSink != null && ReferenceEquals(lockedSink.LockedObject, this))
         {
             lockedSink.TryRemoveObject();
+            return;
+        }
+
+        if (lockedEssenceSlot != null)
+        {
+            lockedEssenceSlot.TryRemoveCauldron();
             return;
         }
 
@@ -615,6 +737,7 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
         }
 
         Transform currentParent = transform.parent;
+        SfxAudio.PlayAt(potionConversionSfx, transform.position, potionConversionSfxVolume);
         Instantiate(recipe.potionPrefab, transform.position, transform.rotation, currentParent);
         Destroy(gameObject);
     }

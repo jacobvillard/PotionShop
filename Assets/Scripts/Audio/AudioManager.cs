@@ -102,3 +102,48 @@ public class AudioManager : MonoBehaviour
         Destroy(audioObject, clip.length + 0.1f);
     }
 }
+
+/// <summary>Shared setup for world-space SFX loops routed through the SFX mixer.</summary>
+public static class SfxAudio
+{
+    public static AudioSource CreateLoopSource(
+        GameObject owner,
+        AudioClip clip,
+        float volume = 1f,
+        float spatialBlend = 1f,
+        float minDistance = 1f,
+        float maxDistance = 20f)
+    {
+        if (owner == null || clip == null)
+            return null;
+
+        AudioSource source = owner.AddComponent<AudioSource>();
+        source.clip = clip;
+        source.loop = true;
+        source.playOnAwake = false;
+        source.volume = Mathf.Clamp01(volume);
+        source.spatialBlend = Mathf.Clamp01(spatialBlend);
+        source.minDistance = minDistance;
+        source.maxDistance = maxDistance;
+        source.rolloffMode = AudioRolloffMode.Logarithmic;
+        source.outputAudioMixerGroup = AudioManager.Instance != null
+            ? AudioManager.Instance.SfxMixerGroup
+            : null;
+        return source;
+    }
+
+    public static void PlayAt(AudioClip clip, Vector3 position, float volume = 1f)
+    {
+        if (clip == null)
+            return;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayOneShotAtLocation(clip, position, volume);
+    }
+
+    public static void RouteToSfxMixer(AudioSource source)
+    {
+        if (source != null && AudioManager.Instance != null)
+            source.outputAudioMixerGroup = AudioManager.Instance.SfxMixerGroup;
+    }
+}

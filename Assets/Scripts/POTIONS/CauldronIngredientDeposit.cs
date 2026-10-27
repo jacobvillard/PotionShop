@@ -8,6 +8,10 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class CauldronIngredientDeposit : MonoBehaviour
 {
+    [Header("SFX")]
+    [SerializeField] private AudioClip ingredientPlopSfx;
+    [SerializeField, Range(0f, 1f)] private float ingredientPlopVolume = 0.8f;
+
     private readonly HashSet<MonoBehaviour> claimedIngredients = new HashSet<MonoBehaviour>();
     private Cauldron cauldron;
 
@@ -29,6 +33,7 @@ public class CauldronIngredientDeposit : MonoBehaviour
 
         if (cauldron.TryAddIngredient(ingredient))
         {
+            SfxAudio.PlayAt(ingredientPlopSfx, transform.position, ingredientPlopVolume);
             Destroy(ingredientObject.gameObject);
         }
         else

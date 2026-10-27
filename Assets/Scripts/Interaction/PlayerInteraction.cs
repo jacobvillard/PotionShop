@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,10 +17,21 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float maxHoldSpeed = 10f;
     [SerializeField] private float rotationDamping = 10f;
 
+    [Header("Default Pickup / Drop SFX")]
+    [Tooltip("Used only when the picked-up Rigidbody has no ObjectSfx component.")]
+    [SerializeField] private AudioClip defaultPickupSfx;
+    [SerializeField] private AudioClip defaultDropSfx;
+    [SerializeField, Range(0f, 1f)] private float defaultPickupSfxVolume = 0.7f;
+    [SerializeField, Range(0f, 1f)] private float defaultDropSfxVolume = 0.7f;
+
     private Rigidbody heldRigidbody;
     private ISinkable heldSinkable;
     private IHoldable heldHoldable;
+    private ObjectSfx heldObjectSfx;
     private Quaternion heldRotation;
+    private Collider[] playerColliders;
+    private readonly List<Collider> ignoredHeldColliders = new();
+    private bool heldObjectKeepsPlayerCollisions;
 
     private float originalDrag;
     private float originalAngularDrag;
@@ -32,6 +44,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             playerCamera = Camera.main;
         }
+
+        playerColliders = GetComponentsInParent<Collider>(true);
     }
 
     private void Update()
@@ -76,6 +90,14 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
+        // Like jars, cauldrons may be inserted directly from the player's
+        // hands into an essence extractor slot.
+        if (heldSinkable is Cauldron cauldron && cauldron.IsLockedInEssenceSlot)
+        {
+            ReleaseHeldObject();
+            return;
+        }
+
         if (heldRigidbody != null)
         {
             MoveHeldObject();
@@ -102,6 +124,17 @@ public class PlayerInteraction : MonoBehaviour
         // Get both BEFORE interacting.
         IInteractable interactable =
             hit.collider.GetComponentInParent<IInteractable>();
+
+        // A calibrated extractor handle must be explicitly released when the
+        // player presses Interact anywhere else. If the same handle is pressed
+        // again, release it without immediately re-arming it.
+        EssenceNeedleController activeNeedle = EssenceNeedleController.ActiveController;
+        if (activeNeedle != null)
+        {
+            activeNeedle.CancelControl();
+            if (ReferenceEquals(interactable, activeNeedle))
+                return;
+        }
 
         Rigidbody rb =
             hit.collider.attachedRigidbody;
@@ -163,11 +196,23 @@ public class PlayerInteraction : MonoBehaviour
     private void PickupObject(Rigidbody rb)
     {
         heldRigidbody = rb;
+        // Staff01 is intentionally allowed to retain its collision with the
+        // player while held. Other carryable physics objects ignore the player
+        // so they cannot block forward movement.
+        heldObjectKeepsPlayerCollisions = rb.GetComponentInParent<Staff>() != null;
+        if (!heldObjectKeepsPlayerCollisions)
+            IgnoreHeldObjectPlayerCollisions();
         heldSinkable = rb.GetComponentInParent<ISinkable>();
         heldSinkable?.SetIsHeld(true);
 
         heldHoldable = rb.GetComponentInParent<IHoldable>();
         heldHoldable?.SetIsHeld(true);
+
+        heldObjectSfx = rb.GetComponentInParent<ObjectSfx>();
+        if (heldObjectSfx != null)
+            heldObjectSfx.PlayPickup();
+        else
+            SfxAudio.PlayAt(defaultPickupSfx, rb.position, defaultPickupSfxVolume);
 
         originalDrag = rb.linearDamping;
         originalAngularDrag = rb.angularDamping;
@@ -267,15 +312,61 @@ public class PlayerInteraction : MonoBehaviour
 
     private void ReleaseHeldObject()
     {
+        if (heldObjectSfx != null)
+            heldObjectSfx.PlayDrop();
+        else if (heldRigidbody != null)
+            SfxAudio.PlayAt(defaultDropSfx, heldRigidbody.position, defaultDropSfxVolume);
+
         heldSinkable?.SetIsHeld(false);
         heldSinkable = null;
 
         heldHoldable?.SetIsHeld(false);
         heldHoldable = null;
+        heldObjectSfx = null;
+
+        RestoreHeldObjectPlayerCollisions();
+        heldObjectKeepsPlayerCollisions = false;
 
         heldRigidbody.linearDamping = originalDrag;
         heldRigidbody.angularDamping = originalAngularDrag;
 
         heldRigidbody = null;
+    }
+
+    private void IgnoreHeldObjectPlayerCollisions()
+    {
+        if (heldRigidbody == null)
+            return;
+
+        ignoredHeldColliders.Clear();
+        foreach (Collider heldCollider in heldRigidbody.GetComponentsInChildren<Collider>(true))
+        {
+            if (heldCollider == null)
+                continue;
+
+            ignoredHeldColliders.Add(heldCollider);
+            foreach (Collider playerCollider in playerColliders)
+            {
+                if (playerCollider != null)
+                    Physics.IgnoreCollision(heldCollider, playerCollider, true);
+            }
+        }
+    }
+
+    private void RestoreHeldObjectPlayerCollisions()
+    {
+        foreach (Collider heldCollider in ignoredHeldColliders)
+        {
+            if (heldCollider == null)
+                continue;
+
+            foreach (Collider playerCollider in playerColliders)
+            {
+                if (playerCollider != null)
+                    Physics.IgnoreCollision(heldCollider, playerCollider, false);
+            }
+        }
+
+        ignoredHeldColliders.Clear();
     }
 }

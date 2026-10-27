@@ -41,6 +41,10 @@ public class Petal : MonoBehaviour, ICauldronIngredient
     [Tooltip("The HSV Value brightness used once the petal is completely dried.")]
     [SerializeField, Range(0f, 1f)] private float driedMaterialValue = 0.39f;
 
+    [Header("Drying SFX")]
+    [SerializeField] private AudioClip dryingLoopSfx;
+    [SerializeField, Range(0f, 1f)] private float dryingLoopVolume = 0.45f;
+
     [Header("Processing Timer")]
     [Tooltip("Optional looping hourglass prefab, shown above this petal while it is drying or cooking.")]
     [SerializeField] private GameObject processingTimerPrefab;
@@ -53,6 +57,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
     private float dryingDuration;
     private bool isCooking;
     private GameObject processingTimerInstance;
+    private AudioSource dryingAudioSource;
 
     public PetalType Type => petalType;
     public PetalState State => state;
@@ -73,6 +78,8 @@ public class Petal : MonoBehaviour, ICauldronIngredient
     {
         CacheMaterialInstances();
         ApplyDryingAppearance(state == PetalState.Dried ? 1f : 0f);
+        dryingAudioSource = SfxAudio.CreateLoopSource(
+            gameObject, dryingLoopSfx, dryingLoopVolume);
 
         if (processingTimerPrefab != null)
         {
@@ -97,6 +104,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
             dryingProgress = dryingDuration;
             activeDryingSources.Clear();
             SetState(PetalState.Dried);
+            UpdateDryingAudio();
         }
     }
 
@@ -131,6 +139,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
         }
 
         UpdateProcessingTimer();
+        UpdateDryingAudio();
     }
 
     /// <summary>Pauses drying from this source without losing any accumulated time.</summary>
@@ -143,6 +152,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
         }
 
         UpdateProcessingTimer();
+        UpdateDryingAudio();
     }
 
     /// <summary>Call this from a future cooking station to show the same processing timer.</summary>
@@ -180,6 +190,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
 
         state = newState;
         UpdateProcessingTimer();
+        UpdateDryingAudio();
         StateChanged?.Invoke(state);
     }
 
@@ -225,6 +236,25 @@ public class Petal : MonoBehaviour, ICauldronIngredient
         if (processingTimerInstance != null)
         {
             processingTimerInstance.SetActive(IsDrying || isCooking);
+        }
+    }
+
+    private void UpdateDryingAudio()
+    {
+        if (dryingAudioSource == null)
+            return;
+
+        if (IsDrying)
+        {
+            if (!dryingAudioSource.isPlaying)
+            {
+                SfxAudio.RouteToSfxMixer(dryingAudioSource);
+                dryingAudioSource.Play();
+            }
+        }
+        else
+        {
+            dryingAudioSource.Stop();
         }
     }
 

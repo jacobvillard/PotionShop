@@ -13,6 +13,10 @@ public class PlantPetal : MonoBehaviour, IInteractable
     [Tooltip("A petal is spawned at every assigned point. Leave empty to spawn one at this flower's transform.")]
     [SerializeField] private List<Transform> petalSpawnPoints = new List<Transform>();
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip harvestSfx;
+    [SerializeField, Range(0f, 1f)] private float harvestSfxVolume = 0.8f;
+
     [Header("Regrowth")]
     [Tooltip("The visible flower transform to shrink and regrow. Defaults to this object.")]
     [SerializeField] private Transform plantVisual;
@@ -62,6 +66,7 @@ public class PlantPetal : MonoBehaviour, IInteractable
         }
 
         isHarvestable = false;
+        SfxAudio.PlayAt(harvestSfx, transform.position, harvestSfxVolume);
         plantVisual.localScale = Vector3.zero;
 
         if (regrowRoutine != null)

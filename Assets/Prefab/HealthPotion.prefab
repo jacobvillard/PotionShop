@@ -213,6 +213,8 @@ GameObject:
   - component: {fileID: 1340130718094963338}
   - component: {fileID: 6565997494702518502}
   - component: {fileID: 3590542103401392215}
+  - component: {fileID: 4052195060187757751}
+  - component: {fileID: 886573472570065927}
   m_Layer: 3
   m_Name: HealthPotion
   m_TagString: Untagged
@@ -344,6 +346,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4052195060187757751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709112046209051696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8233b3dac70347d8951caef8acf01b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectSfx
+  pickupSfx: {fileID: 8300000, guid: 0c00bc57032a86e4eaf2cae91500495c, type: 3}
+  dropSfx: {fileID: 8300000, guid: 60970f5741a81ba43b30903dc5cb1195, type: 3}
+  pickupVolume: 1
+  dropVolume: 0.1
+--- !u!114 &886573472570065927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709112046209051696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a307c2074d4a3e8d474a8fcbd14400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionAmbientSfx
+  loopingSfx: {fileID: 8300000, guid: eb4b1b4061f1bfb4fbf585f7306c5111, type: 3}
+  volume: 0.1
+  minDistance: 0.2
+  maxDistance: 3
 --- !u!1001 &7115076310890017900
 PrefabInstance:
   m_ObjectHideFlags: 0

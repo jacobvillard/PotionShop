@@ -12,11 +12,14 @@ public class IngredientJar : MonoBehaviour, IInteractable, IHoldable
     [SerializeField] private Renderer liquidRenderer;
     [SerializeField, Range(0f, 1f)] private float minimumVisualFill = 0.525f;
     [SerializeField, Range(0f, 1f)] private float maximumVisualFill = 0.585f;
+    [Tooltip("Maximum amount per second that the visible liquid level can change.")]
+    [SerializeField, Min(0.01f)] private float visualAmountPerSecond = 0.25f;
 
     private DripJarSlot lockedSlot;
     private static readonly int FillProperty = Shader.PropertyToID("_Fill");
 
     private float startingAmount;
+    private float displayedAmount;
     private Material liquidMaterialInstance;
     private MaterialPropertyBlock liquidPropertyBlock;
 
@@ -29,6 +32,23 @@ public class IngredientJar : MonoBehaviour, IInteractable, IHoldable
     // the extractor hands it directly from the player to the station.
     public bool CanLockInSlot => !IsLocked && remainingAmount > Mathf.Epsilon;
 
+    /// <summary>Colour used by effects driven by this jar's liquid.</summary>
+    public Color GetLiquidVisualColour()
+    {
+        if (liquidRenderer == null || liquidRenderer.sharedMaterial == null)
+            return Color.white;
+
+        Material material = liquidRenderer.sharedMaterial;
+        if (material.HasProperty("_SideColor"))
+            return material.GetColor("_SideColor");
+        if (material.HasProperty("_BaseColor"))
+            return material.GetColor("_BaseColor");
+        if (material.HasProperty("_Color"))
+            return material.GetColor("_Color");
+
+        return Color.white;
+    }
+
     private Transform originalParent;
 
     private void Awake()
@@ -38,7 +58,20 @@ public class IngredientJar : MonoBehaviour, IInteractable, IHoldable
 
         originalParent = transform.parent;
         startingAmount = Mathf.Max(remainingAmount, Mathf.Epsilon);
+        displayedAmount = remainingAmount;
         InitialiseLiquidVisual();
+    }
+
+    private void Update()
+    {
+        if (Mathf.Approximately(displayedAmount, remainingAmount))
+            return;
+
+        displayedAmount = Mathf.MoveTowards(
+            displayedAmount,
+            remainingAmount,
+            visualAmountPerSecond * Time.deltaTime);
+        UpdateLiquidVisual();
     }
 
     private void OnDestroy()
@@ -58,7 +91,6 @@ public class IngredientJar : MonoBehaviour, IInteractable, IHoldable
             return false;
 
         remainingAmount = Mathf.Max(0f, remainingAmount - amount);
-        UpdateLiquidVisual();
         return true;
     }
 
@@ -93,7 +125,7 @@ public class IngredientJar : MonoBehaviour, IInteractable, IHoldable
         if (liquidRenderer == null || liquidPropertyBlock == null)
             return;
 
-        float normalisedAmount = Mathf.Clamp01(remainingAmount / startingAmount);
+        float normalisedAmount = Mathf.Clamp01(displayedAmount / startingAmount);
 
         if (liquidObject != null)
             liquidObject.SetActive(normalisedAmount > Mathf.Epsilon);
@@ -108,6 +140,14 @@ public class IngredientJar : MonoBehaviour, IInteractable, IHoldable
             )
         );
         liquidRenderer.SetPropertyBlock(liquidPropertyBlock);
+
+        // The jar owns this material instance. Set the value there as well as
+        // on the renderer property block so shaders that do not honour the
+        // property block still show the level changing during a drip pour.
+        if (liquidMaterialInstance != null && liquidMaterialInstance.HasProperty(FillProperty))
+            liquidMaterialInstance.SetFloat(
+                FillProperty,
+                Mathf.Lerp(minimumVisualFill, maximumVisualFill, normalisedAmount));
     }
 
     public void LockToSlot(DripJarSlot slot, Transform lockPoint)
