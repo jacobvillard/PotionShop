@@ -89,6 +89,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c52d4ef7a3a2074d9582c49001ca862, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8170964892973402221}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c52d4ef7a3a2074d9582c49001ca862, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6475638219035481762}
   m_SourcePrefab: {fileID: 100100000, guid: 0c52d4ef7a3a2074d9582c49001ca862, type: 3}
 --- !u!1 &1154312706872317231 stripped
 GameObject:
@@ -158,9 +161,27 @@ MonoBehaviour:
   petalType: 0
   state: 0
   dryingProgress: 0
+  cookingDuration: 10
+  cookingProgress: 0
+  cookedMaterialColour: {r: 0.28, g: 0.12, b: 0.03, a: 1}
   driedMaterialValue: 0.39
   dryingLoopSfx: {fileID: 8300000, guid: 5eb8d437e439d7845b2c62d1f79a49f4, type: 3}
   dryingLoopVolume: 0.45
+  cookingLoopSfx: {fileID: 0}
+  cookingLoopVolume: 0.45
   processingTimerPrefab: {fileID: 7063415256782355870, guid: 60803dbbb69ca8a4ca64853d27352a82, type: 3}
   preserveTimerPrefabScale: 1
   timerHeight: 0
+--- !u!114 &6475638219035481762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154312706872317231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38b41f25387aee4db3016f10971b10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cookable
+  itemRigidbody: {fileID: 5043916258254376866}

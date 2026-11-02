@@ -1,0 +1,1762 @@
+[
+  {
+    "id": 1,
+    "name": "Bone sword",
+    "file": "Icons/128px/001 Bone sword.png",
+    "atlas128": {
+      "x": 0,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 2,
+    "name": "Executioner axe",
+    "file": "Icons/128px/002 Executioner axe.png",
+    "atlas128": {
+      "x": 128,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 3,
+    "name": "Spiked mace",
+    "file": "Icons/128px/003 Spiked mace.png",
+    "atlas128": {
+      "x": 256,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 4,
+    "name": "Ritual dagger",
+    "file": "Icons/128px/004 Ritual dagger.png",
+    "atlas128": {
+      "x": 384,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 5,
+    "name": "Crescent scythe",
+    "file": "Icons/128px/005 Crescent scythe.png",
+    "atlas128": {
+      "x": 512,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 6,
+    "name": "Raven staff",
+    "file": "Icons/128px/006 Raven staff.png",
+    "atlas128": {
+      "x": 640,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 7,
+    "name": "Serrated spear",
+    "file": "Icons/128px/007 Serrated spear.png",
+    "atlas128": {
+      "x": 768,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 8,
+    "name": "Black crossbow",
+    "file": "Icons/128px/008 Black crossbow.png",
+    "atlas128": {
+      "x": 896,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 9,
+    "name": "Skull shield",
+    "file": "Icons/128px/009 Skull shield.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 10,
+    "name": "Bat shield",
+    "file": "Icons/128px/010 Bat shield.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 11,
+    "name": "Iron helmet",
+    "file": "Icons/128px/011 Iron helmet.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 12,
+    "name": "Bone crown",
+    "file": "Icons/128px/012 Bone crown.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 13,
+    "name": "Thorn circlet",
+    "file": "Icons/128px/013 Thorn circlet.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 14,
+    "name": "Spiked armor",
+    "file": "Icons/128px/014 Spiked armor.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 15,
+    "name": "Chain gauntlet",
+    "file": "Icons/128px/015 Chain gauntlet.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 16,
+    "name": "Grave boots",
+    "file": "Icons/128px/016 Grave boots.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 0,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 17,
+    "name": "Blood vial",
+    "file": "Icons/128px/017 Blood vial.png",
+    "atlas128": {
+      "x": 0,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 18,
+    "name": "Ghost potion",
+    "file": "Icons/128px/018 Ghost potion.png",
+    "atlas128": {
+      "x": 128,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 19,
+    "name": "Venom flask",
+    "file": "Icons/128px/019 Venom flask.png",
+    "atlas128": {
+      "x": 256,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 20,
+    "name": "Ash phial",
+    "file": "Icons/128px/020 Ash phial.png",
+    "atlas128": {
+      "x": 384,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 21,
+    "name": "Embalming jar",
+    "file": "Icons/128px/021 Embalming jar.png",
+    "atlas128": {
+      "x": 512,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 22,
+    "name": "Black antidote",
+    "file": "Icons/128px/022 Black antidote.png",
+    "atlas128": {
+      "x": 640,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 23,
+    "name": "Soul bottle",
+    "file": "Icons/128px/023 Soul bottle.png",
+    "atlas128": {
+      "x": 768,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 24,
+    "name": "Nightshade tonic",
+    "file": "Icons/128px/024 Nightshade tonic.png",
+    "atlas128": {
+      "x": 896,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 25,
+    "name": "Human skull",
+    "file": "Icons/128px/025 Human skull.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 26,
+    "name": "Raven skull",
+    "file": "Icons/128px/026 Raven skull.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 27,
+    "name": "Wolf skull",
+    "file": "Icons/128px/027 Wolf skull.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 28,
+    "name": "Horned skull",
+    "file": "Icons/128px/028 Horned skull.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 29,
+    "name": "Jawbone",
+    "file": "Icons/128px/029 Jawbone.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 30,
+    "name": "Rib bone",
+    "file": "Icons/128px/030 Rib bone.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 31,
+    "name": "Femur",
+    "file": "Icons/128px/031 Femur.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 32,
+    "name": "Claw bone",
+    "file": "Icons/128px/032 Claw bone.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 128,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 33,
+    "name": "Obsidian shard",
+    "file": "Icons/128px/033 Obsidian shard.png",
+    "atlas128": {
+      "x": 0,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 34,
+    "name": "Amethyst crystal",
+    "file": "Icons/128px/034 Amethyst crystal.png",
+    "atlas128": {
+      "x": 128,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 35,
+    "name": "Moonstone",
+    "file": "Icons/128px/035 Moonstone.png",
+    "atlas128": {
+      "x": 256,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 36,
+    "name": "Onyx ring",
+    "file": "Icons/128px/036 Onyx ring.png",
+    "atlas128": {
+      "x": 384,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 37,
+    "name": "Garnet necklace",
+    "file": "Icons/128px/037 Garnet necklace.png",
+    "atlas128": {
+      "x": 512,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 38,
+    "name": "Silver coin",
+    "file": "Icons/128px/038 Silver coin.png",
+    "atlas128": {
+      "x": 640,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 39,
+    "name": "Bone token",
+    "file": "Icons/128px/039 Bone token.png",
+    "atlas128": {
+      "x": 768,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 40,
+    "name": "Cursed medal",
+    "file": "Icons/128px/040 Cursed medal.png",
+    "atlas128": {
+      "x": 896,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 41,
+    "name": "Locked grimoire",
+    "file": "Icons/128px/041 Locked grimoire.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 42,
+    "name": "Open spellbook",
+    "file": "Icons/128px/042 Open spellbook.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 43,
+    "name": "Ritual scroll",
+    "file": "Icons/128px/043 Ritual scroll.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 44,
+    "name": "Black quill",
+    "file": "Icons/128px/044 Black quill.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 45,
+    "name": "Ink chalice",
+    "file": "Icons/128px/045 Ink chalice.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 46,
+    "name": "Sealed letter",
+    "file": "Icons/128px/046 Sealed letter.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 47,
+    "name": "Occult map",
+    "file": "Icons/128px/047 Occult map.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 48,
+    "name": "Hex tablet",
+    "file": "Icons/128px/048 Hex tablet.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 256,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 49,
+    "name": "Iron lantern",
+    "file": "Icons/128px/049 Iron lantern.png",
+    "atlas128": {
+      "x": 0,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 50,
+    "name": "Black candle",
+    "file": "Icons/128px/050 Black candle.png",
+    "atlas128": {
+      "x": 128,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 51,
+    "name": "Triple candelabra",
+    "file": "Icons/128px/051 Triple candelabra.png",
+    "atlas128": {
+      "x": 256,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 52,
+    "name": "Ritual brazier",
+    "file": "Icons/128px/052 Ritual brazier.png",
+    "atlas128": {
+      "x": 384,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 53,
+    "name": "Incense burner",
+    "file": "Icons/128px/053 Incense burner.png",
+    "atlas128": {
+      "x": 512,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 54,
+    "name": "Skull candle",
+    "file": "Icons/128px/054 Skull candle.png",
+    "atlas128": {
+      "x": 640,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 55,
+    "name": "Ghost lamp",
+    "file": "Icons/128px/055 Ghost lamp.png",
+    "atlas128": {
+      "x": 768,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 56,
+    "name": "Funeral bell",
+    "file": "Icons/128px/056 Funeral bell.png",
+    "atlas128": {
+      "x": 896,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 57,
+    "name": "Crypt key",
+    "file": "Icons/128px/057 Crypt key.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 58,
+    "name": "Iron lock",
+    "file": "Icons/128px/058 Iron lock.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 59,
+    "name": "Coffin",
+    "file": "Icons/128px/059 Coffin.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 60,
+    "name": "Sarcophagus",
+    "file": "Icons/128px/060 Sarcophagus.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 61,
+    "name": "Tombstone",
+    "file": "Icons/128px/061 Tombstone.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 62,
+    "name": "Grave urn",
+    "file": "Icons/128px/062 Grave urn.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 63,
+    "name": "Reliquary",
+    "file": "Icons/128px/063 Reliquary.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 64,
+    "name": "Cursed chest",
+    "file": "Icons/128px/064 Cursed chest.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 384,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 65,
+    "name": "Bat wing",
+    "file": "Icons/128px/065 Bat wing.png",
+    "atlas128": {
+      "x": 0,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 66,
+    "name": "Raven feather",
+    "file": "Icons/128px/066 Raven feather.png",
+    "atlas128": {
+      "x": 128,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 67,
+    "name": "Spider fang",
+    "file": "Icons/128px/067 Spider fang.png",
+    "atlas128": {
+      "x": 256,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 68,
+    "name": "Vampire fang",
+    "file": "Icons/128px/068 Vampire fang.png",
+    "atlas128": {
+      "x": 384,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 69,
+    "name": "Dragon scale",
+    "file": "Icons/128px/069 Dragon scale.png",
+    "atlas128": {
+      "x": 512,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 70,
+    "name": "Snake skin",
+    "file": "Icons/128px/070 Snake skin.png",
+    "atlas128": {
+      "x": 640,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 71,
+    "name": "Scorpion tail",
+    "file": "Icons/128px/071 Scorpion tail.png",
+    "atlas128": {
+      "x": 768,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 72,
+    "name": "Moth wing",
+    "file": "Icons/128px/072 Moth wing.png",
+    "atlas128": {
+      "x": 896,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 73,
+    "name": "Nightshade flower",
+    "file": "Icons/128px/073 Nightshade flower.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 74,
+    "name": "Dead rose",
+    "file": "Icons/128px/074 Dead rose.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 75,
+    "name": "Mandrake root",
+    "file": "Icons/128px/075 Mandrake root.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 76,
+    "name": "Wolfsbane",
+    "file": "Icons/128px/076 Wolfsbane.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 77,
+    "name": "Hemlock sprig",
+    "file": "Icons/128px/077 Hemlock sprig.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 78,
+    "name": "Poison mushroom",
+    "file": "Icons/128px/078 Poison mushroom.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 79,
+    "name": "Thorn branch",
+    "file": "Icons/128px/079 Thorn branch.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 80,
+    "name": "Dried herb",
+    "file": "Icons/128px/080 Dried herb.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 512,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 81,
+    "name": "Soul drain spell",
+    "file": "Icons/128px/081 Soul drain spell.png",
+    "atlas128": {
+      "x": 0,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 82,
+    "name": "Shadow bolt",
+    "file": "Icons/128px/082 Shadow bolt.png",
+    "atlas128": {
+      "x": 128,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 83,
+    "name": "Bone spear spell",
+    "file": "Icons/128px/083 Bone spear spell.png",
+    "atlas128": {
+      "x": 256,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 84,
+    "name": "Bat swarm",
+    "file": "Icons/128px/084 Bat swarm.png",
+    "atlas128": {
+      "x": 384,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 85,
+    "name": "Spectral hand",
+    "file": "Icons/128px/085 Spectral hand.png",
+    "atlas128": {
+      "x": 512,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 86,
+    "name": "Death mark",
+    "file": "Icons/128px/086 Death mark.png",
+    "atlas128": {
+      "x": 640,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 87,
+    "name": "Purple flame",
+    "file": "Icons/128px/087 Purple flame.png",
+    "atlas128": {
+      "x": 768,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 88,
+    "name": "Frost curse",
+    "file": "Icons/128px/088 Frost curse.png",
+    "atlas128": {
+      "x": 896,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 89,
+    "name": "Blood pact sigil",
+    "file": "Icons/128px/089 Blood pact sigil.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 90,
+    "name": "Fear eye",
+    "file": "Icons/128px/090 Fear eye.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 91,
+    "name": "Silence rune",
+    "file": "Icons/128px/091 Silence rune.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 92,
+    "name": "Binding chain spell",
+    "file": "Icons/128px/092 Binding chain spell.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 93,
+    "name": "Plague cloud",
+    "file": "Icons/128px/093 Plague cloud.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 94,
+    "name": "Summoning circle",
+    "file": "Icons/128px/094 Summoning circle.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 95,
+    "name": "Soul shield",
+    "file": "Icons/128px/095 Soul shield.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 96,
+    "name": "Dark portal",
+    "file": "Icons/128px/096 Dark portal.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 640,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 97,
+    "name": "Raven emblem",
+    "file": "Icons/128px/097 Raven emblem.png",
+    "atlas128": {
+      "x": 0,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 98,
+    "name": "Bat emblem",
+    "file": "Icons/128px/098 Bat emblem.png",
+    "atlas128": {
+      "x": 128,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 99,
+    "name": "Spider emblem",
+    "file": "Icons/128px/099 Spider emblem.png",
+    "atlas128": {
+      "x": 256,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 100,
+    "name": "Serpent emblem",
+    "file": "Icons/128px/100 Serpent emblem.png",
+    "atlas128": {
+      "x": 384,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 101,
+    "name": "Wolf emblem",
+    "file": "Icons/128px/101 Wolf emblem.png",
+    "atlas128": {
+      "x": 512,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 102,
+    "name": "Moth emblem",
+    "file": "Icons/128px/102 Moth emblem.png",
+    "atlas128": {
+      "x": 640,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 103,
+    "name": "Skull emblem",
+    "file": "Icons/128px/103 Skull emblem.png",
+    "atlas128": {
+      "x": 768,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 104,
+    "name": "Eclipse emblem",
+    "file": "Icons/128px/104 Eclipse emblem.png",
+    "atlas128": {
+      "x": 896,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 105,
+    "name": "Chain coil",
+    "file": "Icons/128px/105 Chain coil.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 106,
+    "name": "Iron shackle",
+    "file": "Icons/128px/106 Iron shackle.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 107,
+    "name": "Rusty nail",
+    "file": "Icons/128px/107 Rusty nail.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 108,
+    "name": "Silver needle",
+    "file": "Icons/128px/108 Silver needle.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 109,
+    "name": "Black thread",
+    "file": "Icons/128px/109 Black thread.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 110,
+    "name": "Leather strap",
+    "file": "Icons/128px/110 Leather strap.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 111,
+    "name": "Broken mirror",
+    "file": "Icons/128px/111 Broken mirror.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 112,
+    "name": "Crystal lens",
+    "file": "Icons/128px/112 Crystal lens.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 768,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 113,
+    "name": "Ritual bowl",
+    "file": "Icons/128px/113 Ritual bowl.png",
+    "atlas128": {
+      "x": 0,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 114,
+    "name": "Mortar and pestle",
+    "file": "Icons/128px/114 Mortar and pestle.png",
+    "atlas128": {
+      "x": 128,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 115,
+    "name": "Alchemy flask",
+    "file": "Icons/128px/115 Alchemy flask.png",
+    "atlas128": {
+      "x": 256,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 116,
+    "name": "Cauldron",
+    "file": "Icons/128px/116 Cauldron.png",
+    "atlas128": {
+      "x": 384,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 117,
+    "name": "Surgical saw",
+    "file": "Icons/128px/117 Surgical saw.png",
+    "atlas128": {
+      "x": 512,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 118,
+    "name": "Bone tweezers",
+    "file": "Icons/128px/118 Bone tweezers.png",
+    "atlas128": {
+      "x": 640,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 119,
+    "name": "Hourglass",
+    "file": "Icons/128px/119 Hourglass.png",
+    "atlas128": {
+      "x": 768,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 120,
+    "name": "Antique compass",
+    "file": "Icons/128px/120 Antique compass.png",
+    "atlas128": {
+      "x": 896,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 121,
+    "name": "Gothic tower",
+    "file": "Icons/128px/121 Gothic tower.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 122,
+    "name": "Crypt doorway",
+    "file": "Icons/128px/122 Crypt doorway.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 123,
+    "name": "Wrought gate",
+    "file": "Icons/128px/123 Wrought gate.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 124,
+    "name": "Gargoyle",
+    "file": "Icons/128px/124 Gargoyle.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 125,
+    "name": "Stone altar",
+    "file": "Icons/128px/125 Stone altar.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 126,
+    "name": "Dead tree",
+    "file": "Icons/128px/126 Dead tree.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 127,
+    "name": "Broken column",
+    "file": "Icons/128px/127 Broken column.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 128,
+    "name": "Stained glass window",
+    "file": "Icons/128px/128 Stained glass window.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 896,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 129,
+    "name": "Cursed heart",
+    "file": "Icons/128px/129 Cursed heart.png",
+    "atlas128": {
+      "x": 0,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 130,
+    "name": "Soul crystal",
+    "file": "Icons/128px/130 Soul crystal.png",
+    "atlas128": {
+      "x": 128,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 131,
+    "name": "Blood drop",
+    "file": "Icons/128px/131 Blood drop.png",
+    "atlas128": {
+      "x": 256,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 132,
+    "name": "Sanity eye",
+    "file": "Icons/128px/132 Sanity eye.png",
+    "atlas128": {
+      "x": 384,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 133,
+    "name": "Corruption spiral",
+    "file": "Icons/128px/133 Corruption spiral.png",
+    "atlas128": {
+      "x": 512,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 134,
+    "name": "Armor shard",
+    "file": "Icons/128px/134 Armor shard.png",
+    "atlas128": {
+      "x": 640,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 135,
+    "name": "Experience flame",
+    "file": "Icons/128px/135 Experience flame.png",
+    "atlas128": {
+      "x": 768,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 136,
+    "name": "Rank thorn",
+    "file": "Icons/128px/136 Rank thorn.png",
+    "atlas128": {
+      "x": 896,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 137,
+    "name": "Familiar cat",
+    "file": "Icons/128px/137 Familiar cat.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 138,
+    "name": "Ghost face",
+    "file": "Icons/128px/138 Ghost face.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 139,
+    "name": "Wisp",
+    "file": "Icons/128px/139 Wisp.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 140,
+    "name": "Skeletal hand",
+    "file": "Icons/128px/140 Skeletal hand.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 141,
+    "name": "Zombie hand",
+    "file": "Icons/128px/141 Zombie hand.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 142,
+    "name": "Demon horn",
+    "file": "Icons/128px/142 Demon horn.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 143,
+    "name": "Necromancer mask",
+    "file": "Icons/128px/143 Necromancer mask.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 144,
+    "name": "Plague mask",
+    "file": "Icons/128px/144 Plague mask.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 1024,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 145,
+    "name": "Bone flute",
+    "file": "Icons/128px/145 Bone flute.png",
+    "atlas128": {
+      "x": 0,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 146,
+    "name": "Ritual drum",
+    "file": "Icons/128px/146 Ritual drum.png",
+    "atlas128": {
+      "x": 128,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 147,
+    "name": "Music box",
+    "file": "Icons/128px/147 Music box.png",
+    "atlas128": {
+      "x": 256,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 148,
+    "name": "Tarot card",
+    "file": "Icons/128px/148 Tarot card.png",
+    "atlas128": {
+      "x": 384,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 149,
+    "name": "Dice",
+    "file": "Icons/128px/149 Dice.png",
+    "atlas128": {
+      "x": 512,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 150,
+    "name": "Chess rook",
+    "file": "Icons/128px/150 Chess rook.png",
+    "atlas128": {
+      "x": 640,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 151,
+    "name": "Pocket watch",
+    "file": "Icons/128px/151 Pocket watch.png",
+    "atlas128": {
+      "x": 768,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 152,
+    "name": "Black pearl",
+    "file": "Icons/128px/152 Black pearl.png",
+    "atlas128": {
+      "x": 896,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 153,
+    "name": "Tattered cloak",
+    "file": "Icons/128px/153 Tattered cloak.png",
+    "atlas128": {
+      "x": 1024,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 154,
+    "name": "Silver brooch",
+    "file": "Icons/128px/154 Silver brooch.png",
+    "atlas128": {
+      "x": 1152,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 155,
+    "name": "Black rose bouquet",
+    "file": "Icons/128px/155 Black rose bouquet.png",
+    "atlas128": {
+      "x": 1280,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 156,
+    "name": "Mourning veil",
+    "file": "Icons/128px/156 Mourning veil.png",
+    "atlas128": {
+      "x": 1408,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 157,
+    "name": "Cursed doll",
+    "file": "Icons/128px/157 Cursed doll.png",
+    "atlas128": {
+      "x": 1536,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 158,
+    "name": "Voodoo pin",
+    "file": "Icons/128px/158 Voodoo pin.png",
+    "atlas128": {
+      "x": 1664,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 159,
+    "name": "Funeral wreath",
+    "file": "Icons/128px/159 Funeral wreath.png",
+    "atlas128": {
+      "x": 1792,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  },
+  {
+    "id": 160,
+    "name": "Spirit compass",
+    "file": "Icons/128px/160 Spirit compass.png",
+    "atlas128": {
+      "x": 1920,
+      "y": 1152,
+      "w": 128,
+      "h": 128
+    }
+  }
+]

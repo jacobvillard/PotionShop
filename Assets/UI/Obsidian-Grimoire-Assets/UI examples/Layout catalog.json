@@ -1,0 +1,194 @@
+[
+  {
+    "number": 1,
+    "name": "Main menu",
+    "svg": "SVG/01 Main menu.svg",
+    "png": "PNG/01 Main menu.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 2,
+    "name": "Adventure HUD",
+    "svg": "SVG/02 Adventure HUD.svg",
+    "png": "PNG/02 Adventure HUD.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 3,
+    "name": "Inventory",
+    "svg": "SVG/03 Inventory.svg",
+    "png": "PNG/03 Inventory.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 4,
+    "name": "Equipment",
+    "svg": "SVG/04 Equipment.svg",
+    "png": "PNG/04 Equipment.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 5,
+    "name": "Character stats",
+    "svg": "SVG/05 Character stats.svg",
+    "png": "PNG/05 Character stats.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 6,
+    "name": "Skill tree",
+    "svg": "SVG/06 Skill tree.svg",
+    "png": "PNG/06 Skill tree.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 7,
+    "name": "Spellbook",
+    "svg": "SVG/07 Spellbook.svg",
+    "png": "PNG/07 Spellbook.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 8,
+    "name": "Quest journal",
+    "svg": "SVG/08 Quest journal.svg",
+    "png": "PNG/08 Quest journal.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 9,
+    "name": "Dialogue",
+    "svg": "SVG/09 Dialogue.svg",
+    "png": "PNG/09 Dialogue.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 10,
+    "name": "Merchant shop",
+    "svg": "SVG/10 Merchant shop.svg",
+    "png": "PNG/10 Merchant shop.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 11,
+    "name": "Crafting bench",
+    "svg": "SVG/11 Crafting bench.svg",
+    "png": "PNG/11 Crafting bench.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 12,
+    "name": "Alchemy",
+    "svg": "SVG/12 Alchemy.svg",
+    "png": "PNG/12 Alchemy.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 13,
+    "name": "World map",
+    "svg": "SVG/13 World map.svg",
+    "png": "PNG/13 World map.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 14,
+    "name": "Dungeon route",
+    "svg": "SVG/14 Dungeon route.svg",
+    "png": "PNG/14 Dungeon route.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 15,
+    "name": "Bestiary",
+    "svg": "SVG/15 Bestiary.svg",
+    "png": "PNG/15 Bestiary.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 16,
+    "name": "Achievements",
+    "svg": "SVG/16 Achievements.svg",
+    "png": "PNG/16 Achievements.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 17,
+    "name": "Loot rewards",
+    "svg": "SVG/17 Loot rewards.svg",
+    "png": "PNG/17 Loot rewards.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 18,
+    "name": "Daily rewards",
+    "svg": "SVG/18 Daily rewards.svg",
+    "png": "PNG/18 Daily rewards.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 19,
+    "name": "Settings",
+    "svg": "SVG/19 Settings.svg",
+    "png": "PNG/19 Settings.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 20,
+    "name": "Save and load",
+    "svg": "SVG/20 Save and load.svg",
+    "png": "PNG/20 Save and load.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 21,
+    "name": "Pause menu",
+    "svg": "SVG/21 Pause menu.svg",
+    "png": "PNG/21 Pause menu.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 22,
+    "name": "Victory results",
+    "svg": "SVG/22 Victory results.svg",
+    "png": "PNG/22 Victory results.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 23,
+    "name": "Notifications and tooltips",
+    "svg": "SVG/23 Notifications and tooltips.svg",
+    "png": "PNG/23 Notifications and tooltips.png",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "number": 24,
+    "name": "Mobile inventory",
+    "svg": "SVG/24 Mobile inventory.svg",
+    "png": "PNG/24 Mobile inventory.png",
+    "width": 1920,
+    "height": 1080
+  }
+]

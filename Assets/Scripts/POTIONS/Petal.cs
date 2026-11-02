@@ -37,6 +37,15 @@ public class Petal : MonoBehaviour, ICauldronIngredient
 
     [SerializeField, Min(0f)] private float dryingProgress;
 
+    [Header("Cooking")]
+    [Tooltip("Seconds this petal must spend cooking on a tray before becoming cooked.")]
+    [SerializeField, Min(0f)] private float cookingDuration = 10f;
+    [SerializeField, Min(0f)] private float cookingProgress;
+
+    [Header("Cooking Appearance")]
+    [Tooltip("The colour reached when this petal has fully cooked.")]
+    [SerializeField] private Color cookedMaterialColour = new Color(0.28f, 0.12f, 0.03f, 1f);
+
     [Header("Drying Appearance")]
     [Tooltip("The HSV Value brightness used once the petal is completely dried.")]
     [SerializeField, Range(0f, 1f)] private float driedMaterialValue = 0.39f;
@@ -44,6 +53,10 @@ public class Petal : MonoBehaviour, ICauldronIngredient
     [Header("Drying SFX")]
     [SerializeField] private AudioClip dryingLoopSfx;
     [SerializeField, Range(0f, 1f)] private float dryingLoopVolume = 0.45f;
+
+    [Header("Cooking SFX")]
+    [SerializeField] private AudioClip cookingLoopSfx;
+    [SerializeField, Range(0f, 1f)] private float cookingLoopVolume = 0.45f;
 
     [Header("Processing Timer")]
     [Tooltip("Optional looping hourglass prefab, shown above this petal while it is drying or cooking.")]
@@ -58,6 +71,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
     private bool isCooking;
     private GameObject processingTimerInstance;
     private AudioSource dryingAudioSource;
+    private AudioSource cookingAudioSource;
 
     public PetalType Type => petalType;
     public PetalState State => state;
@@ -70,6 +84,8 @@ public class Petal : MonoBehaviour, ICauldronIngredient
         return $"petal:{type}:{state}";
     }
     public float DryingProgress => dryingProgress;
+    public float CookingProgress => cookingProgress;
+    public float CookingDuration => cookingDuration;
     public bool IsDrying => activeDryingSources.Count > 0 && state == PetalState.Fresh;
     public bool IsCooking => isCooking;
     public event Action<PetalState> StateChanged;
@@ -77,9 +93,11 @@ public class Petal : MonoBehaviour, ICauldronIngredient
     private void Awake()
     {
         CacheMaterialInstances();
-        ApplyDryingAppearance(state == PetalState.Dried ? 1f : 0f);
+        ApplyCookingAppearance();
         dryingAudioSource = SfxAudio.CreateLoopSource(
             gameObject, dryingLoopSfx, dryingLoopVolume);
+        cookingAudioSource = SfxAudio.CreateLoopSource(
+            gameObject, cookingLoopSfx, cookingLoopVolume);
 
         if (processingTimerPrefab != null)
         {
@@ -92,19 +110,28 @@ public class Petal : MonoBehaviour, ICauldronIngredient
 
     private void Update()
     {
-        if (!IsDrying)
+        if (IsDrying)
         {
-            return;
+            dryingProgress += Time.deltaTime;
+            ApplyDryingAppearance(Mathf.Clamp01(dryingProgress / dryingDuration));
+            if (dryingProgress >= dryingDuration)
+            {
+                dryingProgress = dryingDuration;
+                activeDryingSources.Clear();
+                SetState(PetalState.Dried);
+                UpdateDryingAudio();
+            }
         }
 
-        dryingProgress += Time.deltaTime;
-        ApplyDryingAppearance(Mathf.Clamp01(dryingProgress / dryingDuration));
-        if (dryingProgress >= dryingDuration)
+        if (isCooking && state != PetalState.Cooked)
         {
-            dryingProgress = dryingDuration;
-            activeDryingSources.Clear();
-            SetState(PetalState.Dried);
-            UpdateDryingAudio();
+            cookingProgress += Time.deltaTime;
+            ApplyCookingAppearance();
+            if (cookingProgress >= cookingDuration)
+            {
+                cookingProgress = cookingDuration;
+                SetCooked();
+            }
         }
     }
 
@@ -140,6 +167,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
 
         UpdateProcessingTimer();
         UpdateDryingAudio();
+        UpdateCookingAudio();
     }
 
     /// <summary>Pauses drying from this source without losing any accumulated time.</summary>
@@ -153,13 +181,22 @@ public class Petal : MonoBehaviour, ICauldronIngredient
 
         UpdateProcessingTimer();
         UpdateDryingAudio();
+        UpdateCookingAudio();
     }
 
     /// <summary>Call this from a future cooking station to show the same processing timer.</summary>
     public void BeginCooking()
     {
+        if (state == PetalState.Cooked)
+            return;
+
         isCooking = true;
+
+        if (cookingDuration <= 0f)
+            SetCooked();
+
         UpdateProcessingTimer();
+        UpdateCookingAudio();
     }
 
     /// <summary>Stops a cooking process without changing the petal state.</summary>
@@ -167,6 +204,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
     {
         isCooking = false;
         UpdateProcessingTimer();
+        UpdateCookingAudio();
     }
 
     public void SetCooked()
@@ -179,6 +217,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
         activeDryingSources.Clear();
         isCooking = false;
         SetState(PetalState.Cooked);
+        ApplyCookingAppearance();
     }
 
     private void SetState(PetalState newState)
@@ -191,6 +230,7 @@ public class Petal : MonoBehaviour, ICauldronIngredient
         state = newState;
         UpdateProcessingTimer();
         UpdateDryingAudio();
+        UpdateCookingAudio();
         StateChanged?.Invoke(state);
     }
 
@@ -227,8 +267,25 @@ public class Petal : MonoBehaviour, ICauldronIngredient
                 saturation,
                 Mathf.Lerp(value, driedMaterialValue, dryingAmount));
             darkenedColour.a = materialColour.OriginalColour.a;
-            materialColour.Material.SetColor(materialColour.PropertyName, darkenedColour);
+            Color finalColour = Color.Lerp(darkenedColour, cookedMaterialColour, GetCookingAmount());
+            finalColour.a = materialColour.OriginalColour.a;
+            materialColour.Material.SetColor(materialColour.PropertyName, finalColour);
         }
+    }
+
+    private void ApplyCookingAppearance()
+    {
+        ApplyDryingAppearance(state == PetalState.Dried ? 1f : 0f);
+    }
+
+    private float GetCookingAmount()
+    {
+        if (state == PetalState.Cooked)
+            return 1f;
+
+        return cookingDuration <= 0f
+            ? (isCooking ? 1f : 0f)
+            : Mathf.Clamp01(cookingProgress / cookingDuration);
     }
 
     private void UpdateProcessingTimer()
@@ -255,6 +312,25 @@ public class Petal : MonoBehaviour, ICauldronIngredient
         else
         {
             dryingAudioSource.Stop();
+        }
+    }
+
+    private void UpdateCookingAudio()
+    {
+        if (cookingAudioSource == null)
+            return;
+
+        if (isCooking && state != PetalState.Cooked)
+        {
+            if (!cookingAudioSource.isPlaying)
+            {
+                SfxAudio.RouteToSfxMixer(cookingAudioSource);
+                cookingAudioSource.Play();
+            }
+        }
+        else
+        {
+            cookingAudioSource.Stop();
         }
     }
 

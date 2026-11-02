@@ -54,7 +54,6 @@ public class SettingsManager : MonoBehaviour
             {
                 Current.musicVolume = 0.01f;
                 Current.mouseSensitivity = 0.15f;
-                Current.settingsVersion = 3;
             }
         }
         Current.masterVolume = Mathf.Clamp01(Current.masterVolume);

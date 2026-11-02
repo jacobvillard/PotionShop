@@ -1,0 +1,22 @@
+NIMBEKIT ASSET LICENSE — Version 1.0
+
+This is a non-exclusive, worldwide, royalty-free license for the asset files supplied with this download. The paid pack and the free sampler use the same usage terms.
+
+YOU MAY
+• Use and modify the supplied assets in personal and commercial games, applications, videos, streams, tabletop projects and promotional materials for those projects.
+• Publish and sell finished projects containing the assets. There is no per-project royalty.
+• Share the files privately with collaborators working on your project, provided they follow these terms and do not redistribute the files independently.
+• Edit the artwork, recolor it, and adapt the UI component sources.
+• Credit NimbeKit if you wish; attribution is appreciated but not required for the NimbeKit assets.
+
+YOU MAY NOT
+• Sell, sublicense, upload or redistribute the raw assets, modified versions of the raw assets, or an asset pack made primarily from these files.
+• Offer the assets as a standalone download, stock library, template library or competing asset product.
+• Claim exclusive ownership of the supplied artwork or claim that you created the original supplied files.
+
+NimbeKit grants only rights it can grant. This license does not grant exclusive ownership of the supplied assets. The files are provided as-is without warranties. No future updates, support response time, engine integration, or fitness for a particular purpose is promised.
+
+THIRD-PARTY FONTS
+Bundled DejaVu fonts are governed by the separate font license in Fonts/Font license.txt. That license takes precedence for those font files. No other creator’s asset files are included.
+
+Contact: https://nimbekit.itch.io/

@@ -58,8 +58,17 @@ public class PauseMenu : MonoBehaviour
 
     private const string RigidbodySaveFileName = "rigidbodies.save";
     private bool open;
+    private bool externalMenuCursorActive;
     private string awaitingBinding;
-    private string RigidbodySavePath => Path.Combine(Application.persistentDataPath, RigidbodySaveFileName);
+    private static string RigidbodySavePath => Path.Combine(Application.persistentDataPath, RigidbodySaveFileName);
+
+    public static bool HasRigidbodySave() => File.Exists(RigidbodySavePath);
+
+    public static void ClearRigidbodySave()
+    {
+        if (File.Exists(RigidbodySavePath))
+            File.Delete(RigidbodySavePath);
+    }
 
     private void Awake()
     {
@@ -79,7 +88,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (!externalMenuCursorActive && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             TogglePause();
             return;
@@ -93,10 +102,13 @@ public class PauseMenu : MonoBehaviour
         // pause root while this controller still considers the menu open.
         if (!open)
         {
-            // UI/EventSystem processing can release the cursor after Escape was
-            // handled, so apply the gameplay cursor state at the end of frame.
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if (!externalMenuCursorActive)
+            {
+                // UI/EventSystem processing can release the cursor after Escape was
+                // handled, so apply the gameplay cursor state at the end of frame.
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
             return;
         }
 
@@ -108,6 +120,21 @@ public class PauseMenu : MonoBehaviour
     public void TogglePause() => SetPaused(!open);
     public void Pause() => SetPaused(true);
     public void Resume() => SetPaused(false);
+
+    /// <summary>
+    /// Keeps the gameplay cursor released for full-screen menus (such as the Potiondex)
+    /// without opening the pause-menu UI or changing time scale.
+    /// </summary>
+    public void SetExternalMenuCursor(bool active)
+    {
+        externalMenuCursorActive = active;
+        // The Potiondex is a full-screen menu: freeze gameplay without showing
+        // the pause root. On close, only resume if PauseMenu itself is closed.
+        Time.timeScale = active || open ? 0f : 1f;
+        MainMenuCursor menuCursor = GetComponent<MainMenuCursor>();
+        if (menuCursor != null) menuCursor.SetCursorActive(active || open);
+        else { Cursor.lockState = active || open ? CursorLockMode.None : CursorLockMode.Locked; Cursor.visible = active || open; }
+    }
 
     public void SetPaused(bool paused)
     {
@@ -123,8 +150,9 @@ public class PauseMenu : MonoBehaviour
             UpdateBindingLabels();
         }
         Time.timeScale = open ? 0f : 1f;
-        Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = open;
+        MainMenuCursor menuCursor = GetComponent<MainMenuCursor>();
+        if (menuCursor != null) menuCursor.SetCursorActive(open || externalMenuCursorActive);
+        else { Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked; Cursor.visible = open; }
         if (pauseMenuRoot != null) pauseMenuRoot.SetActive(open);
         PauseStateChanged?.Invoke(open);
     }

@@ -28,6 +28,10 @@ public class EssenceExtractor : MonoBehaviour
     [Tooltip("0.2 means the extraction effect runs at one fifth of its authored speed.")]
     [SerializeField, Range(0.05f, 1f)] private float extractionSpeed = 0.2f;
     [SerializeField, Min(0f)] private float amountConsumedPerExtraction = 0.5f;
+    [Header("Sound Effects")]
+    [Tooltip("Played once when a correctly aligned extraction successfully adds an essence.")]
+    [SerializeField] private AudioClip extractionSuccessSfx;
+    [SerializeField, Range(0f, 1f)] private float extractionSuccessSfxVolume = 1f;
 
     private IngredientJar observedJar;
     private LiquidIngredient pendingLiquid;
@@ -165,8 +169,10 @@ public class EssenceExtractor : MonoBehaviour
 
         StopParticles();
 
-        if (cauldron != null && jar != null && jar == observedJar)
+        bool addedEssence = cauldron != null && jar != null && jar == observedJar &&
             cauldron.TryAddEssence(liquid);
+        if (addedEssence)
+            SfxAudio.PlayAt(extractionSuccessSfx, transform.position, extractionSuccessSfxVolume);
 
         if (cauldron != null)
             cauldron.FinishFilling();

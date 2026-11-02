@@ -1,6 +1,14 @@
 # Third-Party Credits
 
+## Music
+
+- **Main menu music — Orchestral Fantasy: WIZARDS** — FabC@RustedMusicStudio (RUSTED MUSIC STUDIO Music & Assets). Source: https://rustedstudio.itch.io/free-music-orchestral-fantasy-wizards. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+
 ## Sound Effects
+
+### Fantasy UI SFX
+
+- **Fantasy UI SFX** — Atelier Magicae (Ririsaurus / Riri Hinasaki). Commercial, non-commercial, and personal use permitted; redistribution is prohibited.
 
 ### CC0 1.0 Universal
 
@@ -75,3 +83,7 @@ Licensed under [Creative Commons Attribution-NonCommercial 4.0 International](ht
   Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
 
 Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+
+## 2D Art
+
+- **Magic Circle.png** — GG Cannon. Modified from the original (colour changed to white and transparency adjusted). Source: https://commons.wikimedia.org/wiki/File:Magic_Circle.png. Licensed under [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/).

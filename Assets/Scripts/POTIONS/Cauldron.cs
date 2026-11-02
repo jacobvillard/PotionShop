@@ -739,6 +739,7 @@ public class Cauldron : MonoBehaviour, ISinkable, IInteractable, IStaffable
         Transform currentParent = transform.parent;
         SfxAudio.PlayAt(potionConversionSfx, transform.position, potionConversionSfxVolume);
         Instantiate(recipe.potionPrefab, transform.position, transform.rotation, currentParent);
+        PotiondexProgress.MarkBrewed(recipe.potionName);
         Destroy(gameObject);
     }
 }

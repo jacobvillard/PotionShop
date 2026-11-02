@@ -1,0 +1,1092 @@
+{
+  "components": [
+    {
+      "name": "Window",
+      "width": 512,
+      "height": 384,
+      "png": "PNG/Window.png",
+      "svg": "SVG/Window.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "Card",
+      "width": 256,
+      "height": 320,
+      "png": "PNG/Card.png",
+      "svg": "SVG/Card.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "Tooltip",
+      "width": 320,
+      "height": 180,
+      "png": "PNG/Tooltip.png",
+      "svg": "SVG/Tooltip.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "Dialogue",
+      "width": 768,
+      "height": 220,
+      "png": "PNG/Dialogue.png",
+      "svg": "SVG/Dialogue.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "HUD panel",
+      "width": 384,
+      "height": 128,
+      "png": "PNG/HUD panel.png",
+      "svg": "SVG/HUD panel.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "Navigation",
+      "width": 224,
+      "height": 512,
+      "png": "PNG/Navigation.png",
+      "svg": "SVG/Navigation.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "Notification",
+      "width": 480,
+      "height": 104,
+      "png": "PNG/Notification.png",
+      "svg": "SVG/Notification.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "Book left",
+      "width": 384,
+      "height": 512,
+      "png": "PNG/Book left.png",
+      "svg": "SVG/Book left.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "Book right",
+      "width": 384,
+      "height": 512,
+      "png": "PNG/Book right.png",
+      "svg": "SVG/Book right.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "Compact panel",
+      "width": 256,
+      "height": 160,
+      "png": "PNG/Compact panel.png",
+      "svg": "SVG/Compact panel.svg",
+      "slice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      }
+    },
+    {
+      "name": "Wide button Normal",
+      "width": 320,
+      "height": 64,
+      "png": "PNG/Wide button Normal.png",
+      "svg": "SVG/Wide button Normal.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Wide button Hover",
+      "width": 320,
+      "height": 64,
+      "png": "PNG/Wide button Hover.png",
+      "svg": "SVG/Wide button Hover.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Wide button Pressed",
+      "width": 320,
+      "height": 64,
+      "png": "PNG/Wide button Pressed.png",
+      "svg": "SVG/Wide button Pressed.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Wide button Disabled",
+      "width": 320,
+      "height": 64,
+      "png": "PNG/Wide button Disabled.png",
+      "svg": "SVG/Wide button Disabled.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Button Normal",
+      "width": 224,
+      "height": 56,
+      "png": "PNG/Button Normal.png",
+      "svg": "SVG/Button Normal.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Button Hover",
+      "width": 224,
+      "height": 56,
+      "png": "PNG/Button Hover.png",
+      "svg": "SVG/Button Hover.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Button Pressed",
+      "width": 224,
+      "height": 56,
+      "png": "PNG/Button Pressed.png",
+      "svg": "SVG/Button Pressed.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Button Disabled",
+      "width": 224,
+      "height": 56,
+      "png": "PNG/Button Disabled.png",
+      "svg": "SVG/Button Disabled.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Square button Normal",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Square button Normal.png",
+      "svg": "SVG/Square button Normal.svg",
+      "slice": null
+    },
+    {
+      "name": "Square button Hover",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Square button Hover.png",
+      "svg": "SVG/Square button Hover.svg",
+      "slice": null
+    },
+    {
+      "name": "Square button Pressed",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Square button Pressed.png",
+      "svg": "SVG/Square button Pressed.svg",
+      "slice": null
+    },
+    {
+      "name": "Square button Disabled",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Square button Disabled.png",
+      "svg": "SVG/Square button Disabled.svg",
+      "slice": null
+    },
+    {
+      "name": "Round button Normal",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Round button Normal.png",
+      "svg": "SVG/Round button Normal.svg",
+      "slice": null
+    },
+    {
+      "name": "Round button Hover",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Round button Hover.png",
+      "svg": "SVG/Round button Hover.svg",
+      "slice": null
+    },
+    {
+      "name": "Round button Pressed",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Round button Pressed.png",
+      "svg": "SVG/Round button Pressed.svg",
+      "slice": null
+    },
+    {
+      "name": "Round button Disabled",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Round button Disabled.png",
+      "svg": "SVG/Round button Disabled.svg",
+      "slice": null
+    },
+    {
+      "name": "Tab Normal",
+      "width": 160,
+      "height": 52,
+      "png": "PNG/Tab Normal.png",
+      "svg": "SVG/Tab Normal.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Tab Hover",
+      "width": 160,
+      "height": 52,
+      "png": "PNG/Tab Hover.png",
+      "svg": "SVG/Tab Hover.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Tab Pressed",
+      "width": 160,
+      "height": 52,
+      "png": "PNG/Tab Pressed.png",
+      "svg": "SVG/Tab Pressed.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Tab Disabled",
+      "width": 160,
+      "height": 52,
+      "png": "PNG/Tab Disabled.png",
+      "svg": "SVG/Tab Disabled.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Dropdown Normal",
+      "width": 256,
+      "height": 56,
+      "png": "PNG/Dropdown Normal.png",
+      "svg": "SVG/Dropdown Normal.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Dropdown Hover",
+      "width": 256,
+      "height": 56,
+      "png": "PNG/Dropdown Hover.png",
+      "svg": "SVG/Dropdown Hover.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Dropdown Pressed",
+      "width": 256,
+      "height": 56,
+      "png": "PNG/Dropdown Pressed.png",
+      "svg": "SVG/Dropdown Pressed.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Dropdown Disabled",
+      "width": 256,
+      "height": 56,
+      "png": "PNG/Dropdown Disabled.png",
+      "svg": "SVG/Dropdown Disabled.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Text field Normal",
+      "width": 320,
+      "height": 56,
+      "png": "PNG/Text field Normal.png",
+      "svg": "SVG/Text field Normal.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Text field Hover",
+      "width": 320,
+      "height": 56,
+      "png": "PNG/Text field Hover.png",
+      "svg": "SVG/Text field Hover.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Text field Pressed",
+      "width": 320,
+      "height": 56,
+      "png": "PNG/Text field Pressed.png",
+      "svg": "SVG/Text field Pressed.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Text field Disabled",
+      "width": 320,
+      "height": 56,
+      "png": "PNG/Text field Disabled.png",
+      "svg": "SVG/Text field Disabled.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 20,
+        "bottom": 20
+      }
+    },
+    {
+      "name": "Slot Empty",
+      "width": 96,
+      "height": 96,
+      "png": "PNG/Slot Empty.png",
+      "svg": "SVG/Slot Empty.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      }
+    },
+    {
+      "name": "Slot Common",
+      "width": 96,
+      "height": 96,
+      "png": "PNG/Slot Common.png",
+      "svg": "SVG/Slot Common.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      }
+    },
+    {
+      "name": "Slot Uncommon",
+      "width": 96,
+      "height": 96,
+      "png": "PNG/Slot Uncommon.png",
+      "svg": "SVG/Slot Uncommon.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      }
+    },
+    {
+      "name": "Slot Rare",
+      "width": 96,
+      "height": 96,
+      "png": "PNG/Slot Rare.png",
+      "svg": "SVG/Slot Rare.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      }
+    },
+    {
+      "name": "Slot Epic",
+      "width": 96,
+      "height": 96,
+      "png": "PNG/Slot Epic.png",
+      "svg": "SVG/Slot Epic.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      }
+    },
+    {
+      "name": "Slot Legendary",
+      "width": 96,
+      "height": 96,
+      "png": "PNG/Slot Legendary.png",
+      "svg": "SVG/Slot Legendary.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      }
+    },
+    {
+      "name": "Slot Selected",
+      "width": 96,
+      "height": 96,
+      "png": "PNG/Slot Selected.png",
+      "svg": "SVG/Slot Selected.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      }
+    },
+    {
+      "name": "Slot Locked",
+      "width": 96,
+      "height": 96,
+      "png": "PNG/Slot Locked.png",
+      "svg": "SVG/Slot Locked.svg",
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      }
+    },
+    {
+      "name": "Health bar frame",
+      "width": 320,
+      "height": 28,
+      "png": "PNG/Health bar frame.png",
+      "svg": "SVG/Health bar frame.svg",
+      "slice": {
+        "left": 14,
+        "right": 14,
+        "top": 10,
+        "bottom": 10
+      }
+    },
+    {
+      "name": "Health bar fill",
+      "width": 288,
+      "height": 8,
+      "png": "PNG/Health bar fill.png",
+      "svg": "SVG/Health bar fill.svg",
+      "slice": {
+        "left": 4,
+        "right": 4,
+        "top": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "name": "Health bar ghost",
+      "width": 288,
+      "height": 8,
+      "png": "PNG/Health bar ghost.png",
+      "svg": "SVG/Health bar ghost.svg",
+      "slice": null
+    },
+    {
+      "name": "Mana bar frame",
+      "width": 320,
+      "height": 28,
+      "png": "PNG/Mana bar frame.png",
+      "svg": "SVG/Mana bar frame.svg",
+      "slice": {
+        "left": 14,
+        "right": 14,
+        "top": 10,
+        "bottom": 10
+      }
+    },
+    {
+      "name": "Mana bar fill",
+      "width": 288,
+      "height": 8,
+      "png": "PNG/Mana bar fill.png",
+      "svg": "SVG/Mana bar fill.svg",
+      "slice": {
+        "left": 4,
+        "right": 4,
+        "top": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "name": "Mana bar ghost",
+      "width": 288,
+      "height": 8,
+      "png": "PNG/Mana bar ghost.png",
+      "svg": "SVG/Mana bar ghost.svg",
+      "slice": null
+    },
+    {
+      "name": "Stamina bar frame",
+      "width": 320,
+      "height": 28,
+      "png": "PNG/Stamina bar frame.png",
+      "svg": "SVG/Stamina bar frame.svg",
+      "slice": {
+        "left": 14,
+        "right": 14,
+        "top": 10,
+        "bottom": 10
+      }
+    },
+    {
+      "name": "Stamina bar fill",
+      "width": 288,
+      "height": 8,
+      "png": "PNG/Stamina bar fill.png",
+      "svg": "SVG/Stamina bar fill.svg",
+      "slice": {
+        "left": 4,
+        "right": 4,
+        "top": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "name": "Stamina bar ghost",
+      "width": 288,
+      "height": 8,
+      "png": "PNG/Stamina bar ghost.png",
+      "svg": "SVG/Stamina bar ghost.svg",
+      "slice": null
+    },
+    {
+      "name": "Experience bar frame",
+      "width": 320,
+      "height": 28,
+      "png": "PNG/Experience bar frame.png",
+      "svg": "SVG/Experience bar frame.svg",
+      "slice": {
+        "left": 14,
+        "right": 14,
+        "top": 10,
+        "bottom": 10
+      }
+    },
+    {
+      "name": "Experience bar fill",
+      "width": 288,
+      "height": 8,
+      "png": "PNG/Experience bar fill.png",
+      "svg": "SVG/Experience bar fill.svg",
+      "slice": {
+        "left": 4,
+        "right": 4,
+        "top": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "name": "Experience bar ghost",
+      "width": 288,
+      "height": 8,
+      "png": "PNG/Experience bar ghost.png",
+      "svg": "SVG/Experience bar ghost.svg",
+      "slice": null
+    },
+    {
+      "name": "Toggle Off",
+      "width": 80,
+      "height": 48,
+      "png": "PNG/Toggle Off.png",
+      "svg": "SVG/Toggle Off.svg",
+      "slice": null
+    },
+    {
+      "name": "Toggle On",
+      "width": 80,
+      "height": 48,
+      "png": "PNG/Toggle On.png",
+      "svg": "SVG/Toggle On.svg",
+      "slice": null
+    },
+    {
+      "name": "Toggle Disabled off",
+      "width": 80,
+      "height": 48,
+      "png": "PNG/Toggle Disabled off.png",
+      "svg": "SVG/Toggle Disabled off.svg",
+      "slice": null
+    },
+    {
+      "name": "Toggle Disabled on",
+      "width": 80,
+      "height": 48,
+      "png": "PNG/Toggle Disabled on.png",
+      "svg": "SVG/Toggle Disabled on.svg",
+      "slice": null
+    },
+    {
+      "name": "Checkbox Off",
+      "width": 48,
+      "height": 48,
+      "png": "PNG/Checkbox Off.png",
+      "svg": "SVG/Checkbox Off.svg",
+      "slice": null
+    },
+    {
+      "name": "Checkbox On",
+      "width": 48,
+      "height": 48,
+      "png": "PNG/Checkbox On.png",
+      "svg": "SVG/Checkbox On.svg",
+      "slice": null
+    },
+    {
+      "name": "Checkbox Disabled off",
+      "width": 48,
+      "height": 48,
+      "png": "PNG/Checkbox Disabled off.png",
+      "svg": "SVG/Checkbox Disabled off.svg",
+      "slice": null
+    },
+    {
+      "name": "Checkbox Disabled on",
+      "width": 48,
+      "height": 48,
+      "png": "PNG/Checkbox Disabled on.png",
+      "svg": "SVG/Checkbox Disabled on.svg",
+      "slice": null
+    },
+    {
+      "name": "Radio Off",
+      "width": 48,
+      "height": 48,
+      "png": "PNG/Radio Off.png",
+      "svg": "SVG/Radio Off.svg",
+      "slice": null
+    },
+    {
+      "name": "Radio On",
+      "width": 48,
+      "height": 48,
+      "png": "PNG/Radio On.png",
+      "svg": "SVG/Radio On.svg",
+      "slice": null
+    },
+    {
+      "name": "Radio Disabled off",
+      "width": 48,
+      "height": 48,
+      "png": "PNG/Radio Disabled off.png",
+      "svg": "SVG/Radio Disabled off.svg",
+      "slice": null
+    },
+    {
+      "name": "Radio Disabled on",
+      "width": 48,
+      "height": 48,
+      "png": "PNG/Radio Disabled on.png",
+      "svg": "SVG/Radio Disabled on.svg",
+      "slice": null
+    },
+    {
+      "name": "Slider track",
+      "width": 320,
+      "height": 20,
+      "png": "PNG/Slider track.png",
+      "svg": "SVG/Slider track.svg",
+      "slice": null
+    },
+    {
+      "name": "Slider fill",
+      "width": 320,
+      "height": 20,
+      "png": "PNG/Slider fill.png",
+      "svg": "SVG/Slider fill.svg",
+      "slice": null
+    },
+    {
+      "name": "Slider knob",
+      "width": 32,
+      "height": 32,
+      "png": "PNG/Slider knob.png",
+      "svg": "SVG/Slider knob.svg",
+      "slice": null
+    },
+    {
+      "name": "Slider knob hover",
+      "width": 32,
+      "height": 32,
+      "png": "PNG/Slider knob hover.png",
+      "svg": "SVG/Slider knob hover.svg",
+      "slice": null
+    },
+    {
+      "name": "Scrollbar track",
+      "width": 20,
+      "height": 256,
+      "png": "PNG/Scrollbar track.png",
+      "svg": "SVG/Scrollbar track.svg",
+      "slice": null
+    },
+    {
+      "name": "Scrollbar thumb",
+      "width": 20,
+      "height": 64,
+      "png": "PNG/Scrollbar thumb.png",
+      "svg": "SVG/Scrollbar thumb.svg",
+      "slice": null
+    },
+    {
+      "name": "Scrollbar thumb hover",
+      "width": 20,
+      "height": 64,
+      "png": "PNG/Scrollbar thumb hover.png",
+      "svg": "SVG/Scrollbar thumb hover.svg",
+      "slice": null
+    },
+    {
+      "name": "Badge Rank",
+      "width": 96,
+      "height": 48,
+      "png": "PNG/Badge Rank.png",
+      "svg": "SVG/Badge Rank.svg",
+      "slice": null
+    },
+    {
+      "name": "Badge Quest",
+      "width": 96,
+      "height": 48,
+      "png": "PNG/Badge Quest.png",
+      "svg": "SVG/Badge Quest.svg",
+      "slice": null
+    },
+    {
+      "name": "Badge Currency",
+      "width": 96,
+      "height": 48,
+      "png": "PNG/Badge Currency.png",
+      "svg": "SVG/Badge Currency.svg",
+      "slice": null
+    },
+    {
+      "name": "Badge New",
+      "width": 96,
+      "height": 48,
+      "png": "PNG/Badge New.png",
+      "svg": "SVG/Badge New.svg",
+      "slice": null
+    },
+    {
+      "name": "Badge Sale",
+      "width": 96,
+      "height": 48,
+      "png": "PNG/Badge Sale.png",
+      "svg": "SVG/Badge Sale.svg",
+      "slice": null
+    },
+    {
+      "name": "Badge Level",
+      "width": 96,
+      "height": 48,
+      "png": "PNG/Badge Level.png",
+      "svg": "SVG/Badge Level.svg",
+      "slice": null
+    },
+    {
+      "name": "Divider Line",
+      "width": 320,
+      "height": 40,
+      "png": "PNG/Divider Line.png",
+      "svg": "SVG/Divider Line.svg",
+      "slice": null
+    },
+    {
+      "name": "Divider Gem",
+      "width": 320,
+      "height": 40,
+      "png": "PNG/Divider Gem.png",
+      "svg": "SVG/Divider Gem.svg",
+      "slice": null
+    },
+    {
+      "name": "Divider Crest",
+      "width": 320,
+      "height": 40,
+      "png": "PNG/Divider Crest.png",
+      "svg": "SVG/Divider Crest.svg",
+      "slice": null
+    },
+    {
+      "name": "Header crest",
+      "width": 128,
+      "height": 128,
+      "png": "PNG/Header crest.png",
+      "svg": "SVG/Header crest.svg",
+      "slice": null
+    },
+    {
+      "name": "Cursor Pointer",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Cursor Pointer.png",
+      "svg": "SVG/Cursor Pointer.svg",
+      "slice": null
+    },
+    {
+      "name": "Cursor Hand",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Cursor Hand.png",
+      "svg": "SVG/Cursor Hand.svg",
+      "slice": null
+    },
+    {
+      "name": "Cursor Target",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Cursor Target.png",
+      "svg": "SVG/Cursor Target.svg",
+      "slice": null
+    },
+    {
+      "name": "Cursor Text",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Cursor Text.png",
+      "svg": "SVG/Cursor Text.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Close",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Close.png",
+      "svg": "SVG/Symbol Close.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Plus",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Plus.png",
+      "svg": "SVG/Symbol Plus.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Minus",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Minus.png",
+      "svg": "SVG/Symbol Minus.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Check",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Check.png",
+      "svg": "SVG/Symbol Check.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Arrow left",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Arrow left.png",
+      "svg": "SVG/Symbol Arrow left.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Arrow right",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Arrow right.png",
+      "svg": "SVG/Symbol Arrow right.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Arrow up",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Arrow up.png",
+      "svg": "SVG/Symbol Arrow up.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Arrow down",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Arrow down.png",
+      "svg": "SVG/Symbol Arrow down.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Menu",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Menu.png",
+      "svg": "SVG/Symbol Menu.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Pause",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Pause.png",
+      "svg": "SVG/Symbol Pause.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Play",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Play.png",
+      "svg": "SVG/Symbol Play.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Search",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Search.png",
+      "svg": "SVG/Symbol Search.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Home",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Home.png",
+      "svg": "SVG/Symbol Home.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Sound",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Sound.png",
+      "svg": "SVG/Symbol Sound.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Back",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Back.png",
+      "svg": "SVG/Symbol Back.svg",
+      "slice": null
+    },
+    {
+      "name": "Symbol Expand",
+      "width": 64,
+      "height": 64,
+      "png": "PNG/Symbol Expand.png",
+      "svg": "SVG/Symbol Expand.svg",
+      "slice": null
+    }
+  ],
+  "count": 107,
+  "sliceNote": "Margins measured from source PNG edge. Corner ornaments stay inside margins. Text and icons are separate."
+}

@@ -52,6 +52,9 @@ public class EssenceNeedleController : MonoBehaviour, IInteractable
     [SerializeField] private Renderer indicatorRenderer;
     [SerializeField] private Material inactiveMaterial;
     [SerializeField] private Material readyMaterial;
+    [Tooltip("Played when the needle enters the correct alignment and the indicator turns green.")]
+    [SerializeField] private AudioClip alignmentSuccessSfx;
+    [SerializeField, Range(0f, 1f)] private float alignmentSuccessSfxVolume = 1f;
 
     private float targetAngle;
     private float handleAngle;
@@ -182,6 +185,7 @@ public class EssenceNeedleController : MonoBehaviour, IInteractable
         // to hold or operate the control any further.
         if (IsAligned)
         {
+            SfxAudio.PlayAt(alignmentSuccessSfx, transform.position, alignmentSuccessSfxVolume);
             if (logAlignmentDiagnostics)
             {
                 Debug.Log(

@@ -47,6 +47,28 @@ public class PotionRecipeBook : ScriptableObject
 {
     [SerializeField] private List<PotionRecipe> recipes = new List<PotionRecipe>();
 
+    public PotionRecipe FindByName(string potionName)
+    {
+        return recipes.Find(recipe => recipe != null &&
+            string.Equals(recipe.potionName, potionName, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public static string DescribeIngredients(PotionRecipe recipe)
+    {
+        if (recipe == null) return "Formula data not found.";
+        List<string> ingredients = new List<string>();
+        foreach (LiquidRequirement liquid in recipe.liquids)
+            if (liquid != null && liquid.amount > 0f) ingredients.Add($"{liquid.amount:0.#} × {liquid.ingredient}");
+        foreach (PetalRequirement petal in recipe.petals)
+            if (petal != null && petal.amount > 0) ingredients.Add($"{petal.amount} × {petal.state} {petal.type} petal");
+        foreach (AdditionalIngredientRequirement item in recipe.additionalIngredients)
+            if (item != null && !string.IsNullOrWhiteSpace(item.ingredientId)) ingredients.Add($"{item.amount} × {Readable(item.ingredientId)}");
+        return ingredients.Count == 0 ? "No ingredients recorded." : string.Join("\n", ingredients);
+    }
+
+    private static string Readable(string id) => id.Replace("ingredient:", "").Replace("essence_", "")
+        .Replace(':', ' ').Replace('-', ' ').Replace('_', ' ');
+
     public bool TryGetMatchingRecipe(Cauldron cauldron, out PotionRecipe matchingRecipe)
     {
         foreach (PotionRecipe recipe in recipes)
