@@ -51,6 +51,16 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Button useRebindButton;
     [SerializeField] private Button quitButton;
 
+    [Header("Grimoire presentation")]
+    [SerializeField] private TMP_FontAsset grimoireFont;
+    [SerializeField] private Sprite grimoireWindow;
+    [SerializeField] private Sprite grimoireButtonNormal;
+    [SerializeField] private Sprite grimoireButtonHover;
+    [SerializeField] private Sprite grimoireButtonPressed;
+    [SerializeField] private Sprite grimoireSliderTrack;
+    [SerializeField] private Sprite grimoireSliderFill;
+    [SerializeField] private Sprite grimoireSliderKnob;
+
     [Header("Automatic rigidbody saves")]
     [SerializeField] private bool loadRigidbodyStateOnStart = true;
     [SerializeField] private bool autosaveWhenPaused = true;
@@ -60,6 +70,7 @@ public class PauseMenu : MonoBehaviour
     private bool open;
     private bool externalMenuCursorActive;
     private string awaitingBinding;
+    private PauseMenuIllustratedView illustratedView;
     private static string RigidbodySavePath => Path.Combine(Application.persistentDataPath, RigidbodySaveFileName);
 
     public static bool HasRigidbodySave() => File.Exists(RigidbodySavePath);
@@ -81,7 +92,11 @@ public class PauseMenu : MonoBehaviour
         // Configure initial slider ranges and values before subscribing, so the
         // prefab's old 0-100 default cannot overwrite loaded settings.
         WireUiEvents();
+        ApplyGrimoirePresentation();
         ShowPanel(mainPanel);
+        illustratedView = GetComponent<PauseMenuIllustratedView>();
+        if (illustratedView == null) illustratedView = gameObject.AddComponent<PauseMenuIllustratedView>();
+        illustratedView.Build(this, pauseMenuRoot);
         if (pauseMenuRoot != null) pauseMenuRoot.SetActive(false);
         if (loadRigidbodyStateOnStart) LoadRigidbodies();
     }
@@ -162,13 +177,37 @@ public class PauseMenu : MonoBehaviour
     public void OpenControls() => OpenPanel(controlsPanel);
     public void OpenGraphics() => OpenPanel(graphicsPanel);
     public void QuitToDesktop() => Application.Quit();
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+    public string InteractBinding => SettingsManager.Current != null ? SettingsManager.Current.interactKey : "E";
+    public string UseBinding => SettingsManager.Current != null ? SettingsManager.Current.useBinding : "MouseLeft";
+    public bool IsAwaitingBinding(string binding) => awaitingBinding == binding;
+    public TMP_FontAsset GrimoireFont => grimoireFont;
+    public Sprite GrimoireWindow => grimoireWindow;
+    public Sprite GrimoireButtonNormal => grimoireButtonNormal;
+    public Sprite GrimoireButtonHover => grimoireButtonHover;
+    public Sprite GrimoireButtonPressed => grimoireButtonPressed;
+    public Sprite GrimoireSliderTrack => grimoireSliderTrack;
+    public Sprite GrimoireSliderFill => grimoireSliderFill;
+    public Sprite GrimoireSliderKnob => grimoireSliderKnob;
     public void BeginInteractRebind() => BeginRebind("Interact");
     public void BeginUseRebind() => BeginRebind("Use");
+    public void ResetControlsToDefault()
+    {
+        SettingsManager.Current.interactKey = "E";
+        SettingsManager.Current.useBinding = "MouseLeft";
+        awaitingBinding = null;
+        ApplyAndSaveSettings();
+        UpdateBindingLabels();
+    }
 
-    public void SetMasterVolume(float value) { SettingsManager.Current.masterVolume = Mathf.Clamp01(value); ApplyAndSaveSettings(); }
-    public void SetMusicVolume(float value) { SettingsManager.Current.musicVolume = Mathf.Clamp01(value); ApplyAndSaveSettings(); }
-    public void SetSfxVolume(float value) { SettingsManager.Current.sfxVolume = Mathf.Clamp01(value); ApplyAndSaveSettings(); }
-    public void SetAmbienceVolume(float value) { SettingsManager.Current.ambienceVolumeSlider = Mathf.Clamp01(value); ApplyAndSaveSettings(); }
+    public void SetMasterVolume(float value) { SettingsManager.Current.masterVolume = Mathf.Clamp01(value); ApplyAndSaveSettings(); RefreshAudioValueLabels(); }
+    public void SetMusicVolume(float value) { SettingsManager.Current.musicVolume = Mathf.Clamp01(value); ApplyAndSaveSettings(); RefreshAudioValueLabels(); }
+    public void SetSfxVolume(float value) { SettingsManager.Current.sfxVolume = Mathf.Clamp01(value); ApplyAndSaveSettings(); RefreshAudioValueLabels(); }
+    public void SetAmbienceVolume(float value) { SettingsManager.Current.ambienceVolumeSlider = Mathf.Clamp01(value); ApplyAndSaveSettings(); RefreshAudioValueLabels(); }
     public void SetMouseSensitivity(float value) { SettingsManager.Current.mouseSensitivity = Mathf.Clamp(value, 0.01f, 0.5f); ApplyAndSaveSettings(); }
     public void SetVSync(bool value) { SettingsManager.Current.vSync = value; ApplyAndSaveSettings(); }
     public void SetQualityLevel(int value) { SettingsManager.Current.qualityLevel = Mathf.Clamp(value, 0, QualitySettings.names.Length - 1); ApplyAndSaveSettings(); }
@@ -229,6 +268,7 @@ public class PauseMenu : MonoBehaviour
         }
         RefreshDisplayUi();
         UpdateBindingLabels();
+        RefreshAudioValueLabels();
     }
 
     private static void ConfigureSlider(Slider slider, float min, float max)
@@ -240,6 +280,121 @@ public class PauseMenu : MonoBehaviour
         slider.minValue = min;
         slider.maxValue = max;
     }
+
+    private void ApplyGrimoirePresentation()
+    {
+        if (pauseMenuRoot == null)
+            return;
+
+        CanvasScaler scaler = GetComponent<CanvasScaler>();
+        if (scaler != null)
+        {
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1920f, 1080f);
+            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            scaler.matchWidthOrHeight = 0.5f;
+        }
+
+        // The settings view is composed from the project's UI sprites at runtime;
+        // no baked screenshot or generated UI backdrop is used.
+        BuildIllustratedLayout();
+
+        foreach (TMP_Text text in pauseMenuRoot.GetComponentsInChildren<TMP_Text>(true))
+        {
+            if (grimoireFont != null) text.font = grimoireFont;
+            bool heading = text.text.IndexOf("settings", StringComparison.OrdinalIgnoreCase) >= 0 || text.text.Equals("menu", StringComparison.OrdinalIgnoreCase);
+            text.color = heading ? new Color(0.98f, 0.78f, 0.38f, 1f) : new Color(0.97f, 0.93f, 0.84f, 1f);
+        }
+
+        foreach (Button button in pauseMenuRoot.GetComponentsInChildren<Button>(true))
+        {
+            Image image = button.GetComponent<Image>();
+            if (image == null || grimoireButtonNormal == null) continue;
+            image.sprite = grimoireButtonNormal;
+            button.transition = Selectable.Transition.SpriteSwap;
+            button.spriteState = new SpriteState { highlightedSprite = grimoireButtonHover, pressedSprite = grimoireButtonPressed, selectedSprite = grimoireButtonHover, disabledSprite = grimoireButtonNormal };
+        }
+
+        foreach (Slider slider in pauseMenuRoot.GetComponentsInChildren<Slider>(true))
+        {
+            Image track = slider.targetGraphic as Image;
+            if (track != null && grimoireSliderTrack != null) track.sprite = grimoireSliderTrack;
+            Image fill = slider.fillRect != null ? slider.fillRect.GetComponent<Image>() : null;
+            if (fill != null && grimoireSliderFill != null) fill.sprite = grimoireSliderFill;
+            Image knob = slider.handleRect != null ? slider.handleRect.GetComponent<Image>() : null;
+            if (knob != null && grimoireSliderKnob != null) knob.sprite = grimoireSliderKnob;
+        }
+
+        foreach (Image image in pauseMenuRoot.GetComponentsInChildren<Image>(true))
+        {
+            if (image.name == "GrimoirePauseArtwork") continue;
+            if (image.GetComponentInParent<Button>() != null || image.GetComponentInParent<Slider>() != null || image.GetComponentInParent<TMP_Dropdown>() != null || image.GetComponentInParent<Toggle>() != null) continue;
+            if (grimoireWindow != null) image.sprite = grimoireWindow;
+        }
+    }
+
+    private void BuildIllustratedLayout()
+    {
+        RectTransform root = pauseMenuRoot.GetComponent<RectTransform>();
+        if (root == null)
+            return;
+
+        root.anchorMin = Vector2.zero;
+        root.anchorMax = Vector2.one;
+        root.offsetMin = Vector2.zero;
+        root.offsetMax = Vector2.zero;
+        root.localScale = Vector3.one;
+
+        Transform existingArtwork = root.Find("GrimoirePauseArtwork");
+        if (existingArtwork != null)
+            existingArtwork.gameObject.SetActive(false);
+
+        // The legacy Window prefabs use a six-times root scale. Keep that scale
+        // so their existing child controls remain the intended readable size, but
+        // place them inside the illustrated left/right pages.
+        PlaceLivePanel(mainPanel, new Vector2(-505f, 0f), new Vector2(60f, 128f));
+        PlaceLivePanel(audioPanel, new Vector2(245f, 0f), new Vector2(166f, 128f));
+        PlaceLivePanel(controlsPanel, new Vector2(245f, 0f), new Vector2(166f, 128f));
+        PlaceLivePanel(graphicsPanel, new Vector2(245f, 0f), new Vector2(166f, 128f));
+    }
+
+    private static void PlaceLivePanel(GameObject panel, Vector2 position, Vector2 logicalSize)
+    {
+        if (panel == null)
+            return;
+
+        RectTransform rect = panel.GetComponent<RectTransform>();
+        if (rect == null)
+            return;
+
+        rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.anchoredPosition = position;
+        rect.sizeDelta = logicalSize;
+        rect.localScale = Vector3.one * 6f;
+
+        // The panel sprite belongs to the replaced Wood UI. Hide it while
+        // retaining its layout groups and all child controls.
+        Image oldWindow = panel.GetComponent<Image>();
+        if (oldWindow != null)
+            oldWindow.color = new Color(1f, 1f, 1f, 0f);
+    }
+
+    private void RefreshAudioValueLabels()
+    {
+        if (pauseMenuRoot == null || SettingsManager.Current == null) return;
+        SetAudioLabel("Main Volume", SettingsManager.Current.masterVolume);
+        SetAudioLabel("Music Volume", SettingsManager.Current.musicVolume);
+        SetAudioLabel("SFX Volume", SettingsManager.Current.sfxVolume);
+        SetAudioLabel("Ambience Volume", SettingsManager.Current.ambienceVolumeSlider);
+    }
+
+    private void SetAudioLabel(string label, float value)
+    {
+        foreach (TMP_Text text in pauseMenuRoot.GetComponentsInChildren<TMP_Text>(true))
+            if (text.text.StartsWith(label, StringComparison.OrdinalIgnoreCase)) { text.text = $"{label}   {Mathf.RoundToInt(value * 100f)}%"; return; }
+    }
+
 
     private void RefreshDisplayUi()
     {
@@ -259,12 +414,30 @@ public class PauseMenu : MonoBehaviour
 
     private void ShowPanel(GameObject panel)
     {
+        if (illustratedView != null)
+        {
+            illustratedView.ShowPage(panel == audioPanel ? PauseMenuIllustratedView.Page.Audio : panel == controlsPanel ? PauseMenuIllustratedView.Page.Controls : panel == graphicsPanel ? PauseMenuIllustratedView.Page.Graphics : PauseMenuIllustratedView.Page.Main);
+            return;
+        }
         // MainPanel is the persistent left-hand navigation window, not a page.
         // Keep it visible while a settings panel is open on the right.
         if (mainPanel != null) mainPanel.SetActive(true);
         if (audioPanel != null) audioPanel.SetActive(panel == audioPanel);
         if (controlsPanel != null) controlsPanel.SetActive(panel == controlsPanel);
         if (graphicsPanel != null) graphicsPanel.SetActive(panel == graphicsPanel);
+        SetActiveNavigationButton(panel == audioPanel ? audioButton : panel == controlsPanel ? controlsButton : panel == graphicsPanel ? graphicsButton : null);
+    }
+
+    private void SetActiveNavigationButton(Button activeButton)
+    {
+        foreach (Button button in new[] { audioButton, controlsButton, graphicsButton })
+        {
+            if (button == null)
+                continue;
+            Image image = button.GetComponent<Image>();
+            if (image != null && grimoireButtonNormal != null)
+                image.sprite = button == activeButton && grimoireButtonHover != null ? grimoireButtonHover : grimoireButtonNormal;
+        }
     }
 
     private void OpenPanel(GameObject panel)
@@ -289,6 +462,13 @@ public class PauseMenu : MonoBehaviour
 
     private void CaptureBinding()
     {
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            awaitingBinding = null;
+            UpdateBindingLabels();
+            return;
+        }
+
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame && awaitingBinding == "Use")
         {
             SettingsManager.Current.useBinding = "MouseLeft";
@@ -300,8 +480,11 @@ public class PauseMenu : MonoBehaviour
         foreach (KeyControl key in Keyboard.current.allKeys)
         {
             if (!key.wasPressedThisFrame) continue;
-            if (awaitingBinding == "Interact") SettingsManager.Current.interactKey = key.keyCode.ToString();
-            else SettingsManager.Current.useBinding = key.keyCode.ToString();
+            string binding = key.keyCode.ToString();
+            if (awaitingBinding == "Interact" && binding == SettingsManager.Current.useBinding) return;
+            if (awaitingBinding == "Use" && binding == SettingsManager.Current.interactKey) return;
+            if (awaitingBinding == "Interact") SettingsManager.Current.interactKey = binding;
+            else SettingsManager.Current.useBinding = binding;
             CompleteRebind();
             return;
         }
